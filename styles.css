@@ -1,0 +1,669 @@
+/* ===== ОБЩИЕ НАСТРОЙКИ ===== */
+
+body {
+  margin: 0;
+  background-color: #dfddd7; /* основной светлый цвет сайта */
+  color: #2B2B2B;
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+
+/* ===== ШАПКА ===== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #4A4D50;
+  padding: 20px 80px;
+  box-shadow: 0 2px 8px rgba(253, 253, 253, 0.918);
+}
+
+.header__nav {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.header__link {
+  color: #dfddd7;
+  text-decoration: none;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+}
+
+
+/* ===== ПЕРВЫЙ ЭКРАН (HERO) ===== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background-image: url("img/hero-bg.jpg"); /* твоя картинка */
+  background-size: cover;
+  background-position: center;
+  color: #dfddd7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 80px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* затемнение 40–50% */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+/* контент поверх overlay + анимация появления */
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeIn 1s ease-out 0.2s forwards;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__subtitle {
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
+
+.hero__title {
+  font-size: 50px;
+  line-height: 1.2;
+  margin: 0 0 32px;
+}
+
+.hero__button {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 24px;
+  background-color: #dfddd7;
+  color: #4A4D50;
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 24px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.hero__button:hover {
+  background-color: #dfddd7;
+  color: #111111;
+  transform: translateY(-2px);
+}
+
+
+/* ===== БЛОК «О СЕБЕ» ===== */
+
+/* тёмная полоса на всю ширину */
+.about {
+  padding: 70px 0 80px;
+  background-color: #4A4D50;             /* запасной цвет */
+  background-image: url("img/about-photo.png"); /* твой PNG-фрейм */
+  background-size: contain;                
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* контент по центру */
+/*  12 колонок точно как в Figma */
+.about__inner {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);  /* 12 равных колонок */
+  gap: 48px;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 32px 56px;
+  justify-content: center;  /* ← ВСЕГДА ПО ЦЕНТРУ */
+}
+
+/* Фото = 4 колонки слева */
+.about__photo-wrapper {
+  grid-column: 2 / 6;  /* колонки 2-5 из 12 (центрировано) */
+  margin-top: 20px;
+}
+
+/* Текст = 6 колонок справа */
+.about__content {
+  grid-column: 6 / 12;  /* колонки 6-11 из 12 (центрировано) */
+  color: #dfddd7;
+  justify-self: end;  /* ← Текст прижимается к правому краю сетки */
+  max-width: 520px;   /* ограничиваем ширину текста */
+}
+
+
+/* фото слева */
+.about__photo-wrapper {
+  flex: 0 0 380px;
+  margin-top: 20px; /* увеличивай/уменьшай это значение */
+}
+
+.about__photo {
+  width: 100%;
+  height: auto;
+  border-radius: 0%; /* без скругления */
+  object-fit: cover;
+}
+/* линия + подпись под фото */
+.about__line-caption {
+  display: flex;
+  align-items: center;
+  gap: 16px;          /* расстояние между линией и текстом */
+  margin-top: 12px;   /* отступ от нижнего края фото */
+}
+
+.about__line {
+  display: block;
+  height: 1px;
+  flex: 1;            /* линия тянется по ширине слева от подписи */
+  background-color: #dfddd7;
+}
+
+/* текст справа */
+.about__content {
+  flex: 1;
+  color: #dfddd7;
+  margin-top: 10px; /* аккуратно приподнимает текст */
+}
+
+.about__title {
+  font-size: 26px;
+  margin: 0 0 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.about__text {
+  margin: 0 0 14px;
+  line-height: 1.6;
+  max-width: 520px;
+  color: #dfddd7;
+  font-size: 15px; 
+}
+
+.about__skills-title {
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.about__list {
+  margin: 0 0 16px;
+  padding-left: 20px;      /* отступ для маркеров */
+  color: #dfddd7;          /* тот же цвет, что и текст */
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.about__list-item {
+  margin-bottom: 4px;
+}
+
+.about__signature {
+  margin-top: 0px;      /* отступ сверху от основного текста */
+  font-size: 15px;
+  color: #dfddd7;
+  line-height: 1.6;
+}
+
+.about__signature-name {
+  font-size: 26px;      /* как .about__title «О себе» */
+  font-weight: 600;     /* можно 600, чтобы смотрелось как заголовок */
+}
+/* ===== УСЛУГИ ===== */
+
+.services {
+  padding: 80px 0;
+  background-color: #E6E5E1; /* как фон страницы */
+}
+
+.services__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 56px;
+}
+
+.services__title {
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-align: center;
+  margin: 0 0 40px;
+  color: #3C3B37;
+}
+
+.services__table {
+  background-color: #E6E5E1;
+  border-top: 1px solid #C3C2BD;
+}
+
+.services__row {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #C3C2BD;
+  font-size: 14px;
+  color: #3C3B37;
+}
+
+.services__row--header {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.services__name {
+  text-align: left;
+}
+
+.services__price {
+  text-align: right;
+}
+/* последняя строка на всю ширину */
+.services__row--full {
+  grid-template-columns: 1fr;      /* одна колонка */
+  font-size: 14px;
+  color: #3C3B37;
+  font-weight: 500; /* или 600, если нужен более заметный жирный */
+}
+.services__list {
+  margin: 50px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.services__list-item {
+  position: relative;
+  padding-left: 28px; /* место под иконку */
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #3C3B37;
+}
+
+/* иконка-галочка */
+.services__list-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px; /* подстрой по высоте, если нужно */
+  width: 16px;   /* размер иконки */
+  height: 16px;
+  background-image: url("img/check-icon.png"); /* путь к твоей иконке */
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: #3C3B37; /* тёмный, как шапка/блоки */
+}
+
+.steps {
+  background-color: #4A4D50;  /* как в макете */
+  padding: 70px 0 80px;
+}
+
+.steps__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 56px;
+  text-align: center;
+  color: #dfddd7;
+}
+
+.steps__title {
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 0 40px;
+}
+
+.steps__image {
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ===== СОСТАВ ТЕХНИЧЕСКОГО ЗАДАНИЯ ===== */
+
+.brief {
+  padding: 80px 0;
+  background-color: #E6E5E1;
+}
+
+.brief__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 56px;
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr;
+  column-gap: 24px;
+  align-items: start;
+}
+
+/* левая колонка — одна картинка */
+
+.brief__gallery {
+  /* одна картинка — просто обёртка */
+}
+
+.brief__image {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+/* правая колонка с текстом */
+
+.brief__title {
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 0 36px;
+  color: #3C3B37;
+}
+
+.brief__text {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #3C3B37;
+}
+
+/* отдельный селектор, не внутри! */
+.brief__text--strong {
+  font-weight: 600;   /* или 700, если хочешь жирнее */
+}
+
+
+.brief__list {
+  margin: 0 0 20px;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #3C3B37;
+}
+
+.brief__list-item + .brief__list-item {
+  margin-top: 6px;
+}
+
+/* ===== ПОРТФОЛИО ===== */
+
+.portfolio {
+  padding: 80px 0;
+  background-color: #E6E5E1;
+}
+
+.portfolio__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 56px;
+}
+
+.portfolio__title {
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 0 35px;
+  text-align: center;
+  color: #3C3B37;
+}
+
+
+.portfolio__section {
+  margin-bottom: 80px;
+}
+
+
+/* картинка + стрелки */
+.portfolio__slider {
+  position: relative;
+  overflow: hidden;
+  max-width: 1050px;
+  margin: 0 auto;
+   margin-bottom: 80px;   /* добавили этот отступ */
+}
+/* заголовок под слайдером "Яркие интерьеры" и т.д. */
+.portfolio__section-title {
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 0 35px;
+  color: #3C3B37;
+  text-align: center;
+}
+
+.portfolio__slides {
+  display: flex;
+  transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+}
+
+.portfolio__slide {
+  flex: 0 0 100%;
+  padding-bottom: 12px;
+  box-sizing: border-box;
+}
+
+.portfolio__image {
+  width: 100%;
+  height: 600px;       /* ← ФИКСИРОВАННАЯ высота вместо aspect-ratio */
+  display: block;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.portfolio__image--full {
+  height: 600px;       /* ← ТОЖЕ 450px, но целиком */
+  object-fit: contain; /* ← квадратные показываются целиком */
+}
+
+.portfolio__controls {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+
+.portfolio__arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #959697;
+  background-color: transparent;
+  color: #959697;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.portfolio__arrow:hover {
+  background-color: #4A4D50;
+  color: #ffffff;
+}
+
+.contacts {
+  padding: 80px 0 60px;
+  background-color: #E6E5E1;          /* фон как у страницы */
+}
+
+.contacts__card {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 50px 56px 50px;
+  background-color: #D9D9D9;         /* светлый прямоугольник */
+  border-radius: 16px;
+  text-align: center;
+}
+
+.contacts__title {
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 0 12px;
+  color: #3C3B37;
+}
+
+.contacts__subtitle {
+  margin: 0 0 24px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #3C3B37;
+  font-weight: 500;   /* стало заметно жирнее */
+}
+
+.contacts__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+  align-items: center;            /* центрируем как в макете */
+}
+
+.contacts__btn {
+  display: block;
+  padding: 14px 32px; /* как у .hero__button */
+  border-radius: 24px;
+  background-color: #4A4D50;
+  color: #dfddd7;
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid #4A4D50;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  max-width: 260px;               /* чтобы не были слишком длинными */
+}
+
+.contacts__line {
+  width: 150px;          /* длина линии, подгони под макет */
+  height: 2px;          /* «средняя» толщина */
+  background-color: #3C3B37;  /* цвет как у линий/границ в макете */
+  margin: 24px auto 16px;     /* отступ сверху от кнопок и снизу до иконок */
+  border-radius: 999px;       /* чтобы края были слегка скруглённые */
+}
+
+.contacts__btn:hover {
+  background-color: transparent;
+  color: #4A4D50;
+  transform: translateY(-2px);    /* как лёгкий подъём на главной */
+}
+
+.contacts__icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.contacts__icons img {
+  width: 28px;
+  height: 28px;
+  margin: 0 6px; /* расстояние между иконками */
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.contacts-icons img:hover {
+  transform: scale(1.1); /* лёгкое увеличение при наведении */
+}
+
+/* Футер */
+.footer {
+  background: #4A4D50;
+  padding: 100px 20px 40px;  /* место сверху */
+  text-align: center;
+  position: relative;        /* контейнер для позиционирования */
+}
+
+/* Социальные сети */
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;         /* было 150px — слишком много */
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.footer-social a {
+  color: #E6E5E1;
+  text-decoration: none;
+  font-size: 11px;
+  transition: color 0.3s;
+}
+
+.footer-social a:hover {
+  color: #ffffff;
+}
+
+/* Копирайт (только ОДИН блок) */
+.footer-text {
+  margin: 0;
+  font-size: 10px;
+  color: #E6E5E1;
+  line-height: 1.3;
+  padding-top: 20px;
+  border-top: 1px solid #e2e1de93;
+  display: inline-block;
+  width: 800px;      /* было 1100px — слишком широко */
+}
+
+/* ЗЕЛЁНЫЙ блок навигации */
+.footer-nav-block {
+  background: #E6E5E1;
+  position: absolute;        /* ← АБСОЛЮТНО */
+  top: -5px;                 /* ← 20px от верха футера */
+  left: 50%;
+  transform: translateX(-50%); /* центрируем */
+  border-radius: 10px;
+  padding: 12px 40px;
+  max-width: 450px;
+  z-index: 2;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.footer-nav a {
+  color: #4A4D50;                
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 12px;
+  transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+  color: #2B2B2B;                  /* тёмный на зелёном */
+  font-weight: 600;    /* ← жирный при hover */
+}
