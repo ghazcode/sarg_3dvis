@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const total = slides.children.length;
       
       function showSlide(n) {
+        // МГНОВЕННАЯ смена БЕЗ анимации
+        slides.style.transition = 'none';
         slides.style.transform = `translateX(-${n * 100}%)`;
       }
       
