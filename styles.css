@@ -463,8 +463,8 @@ body {
 
 .portfolio__slides {
   display: flex;
-  transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-}
+  transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}  
 
 .portfolio__slide {
   flex: 0 0 100%;
@@ -667,3 +667,4 @@ body {
   color: #2B2B2B;                  /* тёмный на зелёном */
   font-weight: 600;    /* ← жирный при hover */
 }
+
