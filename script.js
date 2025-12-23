@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showSlide(current);
       });
       
-      showSlide(0); // Показать первый слайд
+      showSlide(0);
     }
   });
 });
