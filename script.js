@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Слайдеры
   const sliders = document.querySelectorAll('[data-slider]');
   sliders.forEach(slider => {
     const slides = slider.querySelector('.portfolio__slides');
@@ -23,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
         current = current < total - 1 ? current + 1 : 0;
         showSlide(current);
       });
+      
+      showSlide(0); // Показать первый слайд
     }
   });
 });
