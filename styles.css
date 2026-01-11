@@ -993,6 +993,7 @@ margin: 0 0 14px;
   background-repeat: no-repeat !important;
   background-position: center !important;
   display: block !important;
+  content: none !important;
 }
   
 .brief {
@@ -1326,6 +1327,7 @@ html, body {
 }
 
 }
+
 
 
 
