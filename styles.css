@@ -986,14 +986,13 @@ margin: 0 0 14px;
 }
   
 .steps__image {
-    content: none !important;  
-    background-image: url("stepsmobil.png") !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    width: 100% !important;
-    height: 400px !important;  /* фиксированная высота */
-    display: block !important;
+  content: url("stepsmobil.png") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
   }
   
 .brief {
@@ -1327,6 +1326,7 @@ html, body {
 }
 
 }
+
 
 
 
