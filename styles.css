@@ -822,6 +822,7 @@ margin: 0 0 14px;
     padding-top: 50px !important;
     padding-bottom: 60px !important;
     background-color: #4A4D50;
+  background-image: none !important;  /* ← БЛОКИРУЕТ ДЕСКТОПНЫЙ ФОН */
 
   }
   
@@ -1329,6 +1330,7 @@ html, body {
 }
 
 }
+
 
 
 
