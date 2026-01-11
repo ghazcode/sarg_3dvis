@@ -822,9 +822,6 @@ margin: 0 0 14px;
     padding-top: 50px !important;
     padding-bottom: 60px !important;
     background-color: #4A4D50;
-    background-size: 400px auto !important; 
-    background-repeat: no-repeat !important;
-    background-position: center !important;
 
   }
   
@@ -1332,6 +1329,7 @@ html, body {
 }
 
 }
+
 
 
 
