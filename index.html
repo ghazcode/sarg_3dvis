@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D визуализация интерьера</title>
+    
+
 
     <link rel="stylesheet" href="styles.css">
 
@@ -14,13 +16,23 @@
 
   <body>
     <header class="header">
-      <nav class="header__nav">
-        <a href="#home" class="header__link">Главная</a>
-        <a href="#services" class="header__link">Услуги</a>
-        <a href="#portfolio" class="header__link">Портфолио</a>
-        <a href="#contacts" class="header__link">Контакты</a>
-      </nav>
-    </header>
+  <div class="header__inner">
+
+    <button class="burger" aria-label="Открыть меню">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="header__nav">
+      <a href="#home" class="header__link">Главная</a>
+      <a href="#services" class="header__link">Услуги</a>
+      <a href="#portfolio" class="header__link">Портфолио</a>
+      <a href="#contacts" class="header__link">Контакты</a>
+    </nav>
+  </div>
+</header>
+
 
     <main>
       <!-- первый экран -->
@@ -32,54 +44,58 @@
         </div>
       </section>
 
-      <!-- О себе -->
-      <section class="about" id="about">
-        <div class="about__inner">
 
-          <div class="about__photo-wrapper">
-            <div class="about__line-caption">
+    <!-- О себе -->
+<section class="about" id="about">
+  <div class="about__inner">
 
-            </div>
-          </div>
+    <!-- Весь текст справа -->
+    <div class="about__content">
+      <h2 class="about__title">О себе</h2>
 
-          <div class="about__content">
-            <h2 class="about__title">О себе</h2>
+      <!-- Фото слева (десктоп) / под заголовком (мобилка) -->
+    <div class="about__photo-wrapper">
+      <img src="img/ripsik.jpg" alt="Рипсиме" class="about__photo">
+    </div>
 
-            <p class="about__text">
-              Привет! Меня зовут Рипсиме.
-              Я помогу сделать ваш интерьер живым и реалистичным с помощью 3D визуализации.
-              Люблю свою работу и всегда вкладываю внимание и душу в каждый проект, чтобы подчеркнуть его уникальность и атмосферу.
-            </p>
+<p class="about__text">
+        Привет! Меня зовут Рипсиме.
+        Я помогу сделать ваш интерьер живым и реалистичным с помощью 3D визуализации.
+        Люблю свою работу и всегда вкладываю внимание и душу в каждый проект, чтобы подчеркнуть его уникальность и атмосферу.
+      </p>
 
-            <p class="about__text">
-              В работе уделяю особое внимание деталям и свету, чтобы ваши рендеры выглядели профессионально и вдохновляли.
-            </p>
+      <p class="about__text">
+        В работе уделяю особое внимание деталям и свету, чтобы ваши рендеры выглядели профессионально и вдохновляли.
+      </p>
 
-            <p class="about__text about__skills-title">
-              Мои навыки:
-            </p>
+      <p class="about__text about__skills-title">
+        Мои навыки:
+      </p>
 
-            <ul class="about__list">
-              <li class="about__list-item">Дипломированный интерьерный дизайнер.</li>
-              <li class="about__list-item">3 года опыта в 3D визуализации интерьеров.</li>
-              <li class="about__list-item">
-                Работаю в 3ds Max, Corona Renderer, Adobe Photoshop и Illustrator.
-              </li>
-            </ul>
+      <ul class="about__list">
+        <li class="about__list-item">Дипломированный интерьерный дизайнер.</li>
+        <li class="about__list-item">3 года опыта в 3D визуализации интерьеров.</li>
+        <li class="about__list-item">
+          Работаю в 3ds Max, Corona Renderer, Adobe Photoshop и Illustrator.
+        </li>
+      </ul>
 
-            <p class="about__text">
-              Буду рада помочь воплотить ваши идеи в красивых и точных изображениях!
-            </p>
-          </div> <!-- конец about__content -->
+      <p class="about__text">
+        Буду рада помочь воплотить ваши идеи в красивых и точных изображениях!
+      </p>
+       </div><!-- /about__content -->
 
-        </div> <!-- конец about__inner -->
-      </section>
-
+  </div><!-- /about__inner -->
+</section>
+<!-- -->
+<!-- -->
       <!-- Услуги -->
       <section class="services" id="services">
         <div class="services__inner">
+          
           <h2 class="services__title">Услуги</h2>
 
+<!-- ДЕСКТОП: твоя таблица ОСТАЁТСЯ -->
           <div class="services__table">
             <div class="services__row services__row--header">
               <span class="services__name">Наименование услуги</span>
@@ -98,15 +114,16 @@
 
             <div class="services__row">
               <span class="services__name">Помещения площадью до 10 м² </span>
-              <span class="services__price">Фиксированная цена 10 000 руб.</span>
+              <span class="services__price">Фикс. цена 10 000 руб.</span>
             </div>
 
                         <div class="services__row services__row--full">
               <span class="services__name">
-                Сроки: 2–5 рабочих дней на функциональную зону до первых превью
-                (зависят от размера и сложности проекта).
+                Сроки: 2–5 дней на функциональную зону до превью, в зависимости от сложности проекта.
               </span>
             </div>
+</div>
+  
 
             <ul class="services__list">
             <li class="services__list-item">
@@ -123,30 +140,31 @@
             </li>
           </ul>
       </section>
+      </div>
 
       <!-- Этапы работы -->
 <section class="steps" id="steps">
   <div class="steps__inner">
     <h2 class="steps__title">Этапы работы</h2>
-    <img src="steps-scheme.png" alt="Этапы работы" class="steps__image">
+    <img src="img/steps-scheme.png" alt="Этапы работы" class="steps__image">
   </div>
 </section>
 
 <!-- Состав технического задания -->
 <section class="brief" id="brief">
   <div class="brief__inner">
-
+    <!-- 1️⃣ ЛЕВАЯ КОЛОНКА ДЕСКТОП -->
     <div class="brief__gallery">
-      <img src="brief.png" alt="Пример интерьера" class="brief__image">
+      <img src="img/brief.png" alt="Пример интерьера" class="brief__image">
     </div>
 
+    <!-- 2️⃣ ПРАВАЯ КОЛОНКА ДЕСКТОП -->
     <div class="brief__content">
-      <h2 class="brief__title">Состав технического задания</h2>
+ <h2 class="brief__title">Состав технического задания</h2>
 
       <p class="brief__text brief__text--strong">
         Для выполнения визуализации необходимо предоставить техническое задание, в которое должны входить:
       </p>
-
       <ul class="brief__list">
         <li class="brief__list-item">План с расстановкой мебели (формат PDF, DWG).</li>
         <li class="brief__list-item">Обмерный план.</li>
@@ -160,7 +178,6 @@
         <li class="brief__list-item">Примеры или пожелания по декору.</li>
         <li class="brief__list-item">Ссылки на отделочные материалы пола, стен, потолка, цвет оконных рам, дверей. (Указание цвета по Ral / Ncs и тД.).</li>
     </div>
-
   </div>
 </section>
 
@@ -173,70 +190,70 @@
       <div class="portfolio__slider" data-slider>
   <div class="portfolio__slides">
     <div class="portfolio__slide">
-      <img src="portfolio/portfolio-1.jpg" alt="Интерьер 1" class="portfolio__image">
+      <img src="img/portfolio/portfolio-1.jpg" alt="Интерьер 1" class="portfolio__image">
     </div>
     <div class="portfolio__slide">
-      <img src="portfolio/portfolio-2.jpg" alt="Интерьер 2" class="portfolio__image">
+      <img src="img/portfolio/portfolio-2.jpg" alt="Интерьер 2" class="portfolio__image">
     </div>
     <div class="portfolio__slide">
-      <img src="portfolio/portfolio-3.jpg" alt="Интерьер 3" class="portfolio__image">
+      <img src="img/portfolio/portfolio-3.jpg" alt="Интерьер 3" class="portfolio__image">
     </div>
     <div class="portfolio__slide">
-      <img src="portfolio/portfolio-4.jpg" alt="Интерьер 4" class="portfolio__image">
+      <img src="img/portfolio/portfolio-4.jpg" alt="Интерьер 4" class="portfolio__image">
     </div>
     <div class="portfolio__slide">
-      <img src="portfolio/portfolio-5.jpg" alt="Интерьер 5" class="portfolio__image portfolio__image--full">
+      <img src="img/portfolio/portfolio-5.jpg" alt="Интерьер 5" class="portfolio__image portfolio__image--full">
     </div>
     <div class="portfolio__slide">
-      <img src="portfolio/portfolio-6.jpg" alt="Интерьер 6" class="portfolio__image portfolio__image--full">
+      <img src="img/portfolio/portfolio-6.jpg" alt="Интерьер 6" class="portfolio__image portfolio__image--full">
     </div>
      <div class="portfolio__slide">
-    <img src="portfolio/portfolio-7.jpg" alt="Интерьер 7" class="portfolio__image portfolio__image--full">
+    <img src="img/portfolio/portfolio-7.jpg" alt="Интерьер 7" class="portfolio__image portfolio__image--full">
     </div>
     <div class="portfolio__slide">
-      <img src="portfolio/portfolio-8.jpg" alt="Интерьер 8" class="portfolio__image">
+      <img src="img/portfolio/portfolio-8.jpg" alt="Интерьер 8" class="portfolio__image">
     </div>
     <div class="portfolio__slide">
-      <img src="portfolio/portfolio-9.jpg" alt="Интерьер 9" class="portfolio__image">
+      <img src="img/portfolio/portfolio-9.jpg" alt="Интерьер 9" class="portfolio__image">
     </div>
     <div class="portfolio__slide">
-    <img src="portfolio/portfolio-10.jpg" alt="Интерьер 10" class="portfolio__image portfolio__image--full">
+    <img src="img/portfolio/portfolio-10.jpg" alt="Интерьер 10" class="portfolio__image portfolio__image--full">
     </div>
     <div class="portfolio__slide">
-    <img src="portfolio/portfolio-11.jpg" alt="Интерьер 11" class="portfolio__image portfolio__image--full">
+    <img src="img/portfolio/portfolio-11.jpg" alt="Интерьер 11" class="portfolio__image portfolio__image--full">
     </div>
     <div class="portfolio__slide">
-      <img src="portfolio/portfolio-12.jpg" alt="Интерьер 12" class="portfolio__image">
+      <img src="img/portfolio/portfolio-12.jpg" alt="Интерьер 12" class="portfolio__image">
     </div>
     <div class="portfolio__slide">
-      <img src="portfolio/portfolio-13.jpg" alt="Интерьер 13" class="portfolio__image">
+      <img src="img/portfolio/portfolio-13.jpg" alt="Интерьер 13" class="portfolio__image">
     </div>
     <div class="portfolio__slide">
-    <img src="portfolio/portfolio-14.jpg" alt="Интерьер 14" class="portfolio__image portfolio__image--full">
+    <img src="img/portfolio/portfolio-14.jpg" alt="Интерьер 14" class="portfolio__image portfolio__image--full">
     </div>
     <div class="portfolio__slide">
-    <img src="portfolio/portfolio-15.jpg" alt="Интерьер 15" class="portfolio__image portfolio__image--full">
+    <img src="img/portfolio/portfolio-15.jpg" alt="Интерьер 15" class="portfolio__image portfolio__image--full">
     </div>
     <div class="portfolio__slide">
-    <img src="portfolio/portfolio-16.jpg" alt="Интерьер 16" class="portfolio__image portfolio__image--full">
+    <img src="img/portfolio/portfolio-16.jpg" alt="Интерьер 16" class="portfolio__image portfolio__image--full">
     </div>
     <div class="portfolio__slide">
-    <img src="portfolio/portfolio-17.jpg" alt="Интерьер 17" class="portfolio__image portfolio__image--full">
+    <img src="img/portfolio/portfolio-17.jpg" alt="Интерьер 17" class="portfolio__image portfolio__image--full">
     </div>
     <div class="portfolio__slide">
-    <img src="portfolio/portfolio-18.jpg" alt="Интерьер 18" class="portfolio__image portfolio__image--full">
+    <img src="img/portfolio/portfolio-18.jpg" alt="Интерьер 18" class="portfolio__image portfolio__image--full">
     </div>
     <div class="portfolio__slide">
-    <img src="portfolio/portfolio-19.jpg" alt="Интерьер 19" class="portfolio__image portfolio__image--full">
+    <img src="img/portfolio/portfolio-19.jpg" alt="Интерьер 19" class="portfolio__image portfolio__image--full">
     </div>
     <div class="portfolio__slide">
-    <img src="portfolio/portfolio-20.jpg" alt="Интерьер 20" class="portfolio__image portfolio__image--full">
+    <img src="img/portfolio/portfolio-20.jpg" alt="Интерьер 20" class="portfolio__image portfolio__image--full">
     </div>
     <div class="portfolio__slide">
-    <img src="portfolio/portfolio-21.jpg" alt="Интерьер 21" class="portfolio__image portfolio__image--full">
+    <img src="img/portfolio/portfolio-21.jpg" alt="Интерьер 21" class="portfolio__image portfolio__image--full">
     </div>
     <div class="portfolio__slide">
-    <img src="portfolio/portfolio-22.jpg" alt="Интерьер 22" class="portfolio__image portfolio__image--full">
+    <img src="img/portfolio/portfolio-22.jpg" alt="Интерьер 22" class="portfolio__image portfolio__image--full">
     </div>
     <!-- и так далее для всех картинок -->
   </div>
@@ -250,83 +267,170 @@
 <section class="portfolio" id="portfolio">
   <div class="portfolio__inner">
     <h2 class="portfolio__title">ЯРКИЕ ИНТЕРЬЕРЫ</h2>
-<div class="portfolio__section ">
+
+   <div class="portfolio__section ">
+      <div class="portfolio__slider" data-slider>
+  <div class="portfolio__slides">
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-23.jpg" alt="Интерьер 23" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-24.jpg" alt="Интерьер 24" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-25.jpg" alt="Интерьер 25" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-26.jpg" alt="Интерьер 26" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-27.jpg" alt="Интерьер 27" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-28.jpg" alt="Интерьер 28" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-29.jpg" alt="Интерьер 29" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-30.jpg" alt="Интерьер 30" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-31.jpg" alt="Интерьер 31" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-32.jpg" alt="Интерьер 32" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-33.jpg" alt="Интерьер 33" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-34.jpg" alt="Интерьер 34" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-35.jpg" alt="Интерьер 35" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-36.jpg" alt="Интерьер 36" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-37.jpg" alt="Интерьер 37" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-38.jpg" alt="Интерьер 38" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-39.jpg" alt="Интерьер 39" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-40.jpg" alt="Интерьер 40" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-41.jpg" alt="Интерьер 41" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-42.jpg" alt="Интерьер 42" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-43.jpg" alt="Интерьер 43" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-44.jpg" alt="Интерьер 44" class="portfolio__image portfolio__image--full">
+      </div>
+      <div class="portfolio__slide">
+        <img src="img/portfolio/portfolio-45.jpg" alt="Интерьер 45" class="portfolio__image portfolio__image--full">
+      </div>
+    </div>
+
+    <div class="portfolio__controls">
+      <button class="portfolio__arrow portfolio__arrow--prev" type="button">&#8592;</button>
+      <button class="portfolio__arrow portfolio__arrow--next" type="button">&#8594;</button>
+    </div>
+  </div>
+</div>
+
+    <!-- 3. Жилые интерьеры -->
+   <section class="portfolio" id="portfolio">
+  <div class="portfolio__inner">
+    <h2 class="portfolio__title">ЖИЛЫЕ ИНТЕРЬЕРЫ</h2>
+
+   <div class="portfolio__section ">
       <div class="portfolio__slider" data-slider>
   <div class="portfolio__slides">
  <div class="portfolio__slide">
-      <img src="portfolio/portfolio-46.jpg" alt="Интерьер 46" class="portfolio__image">
+      <img src="img/portfolio/portfolio-46.jpg" alt="Интерьер 46" class="portfolio__image">
     </div>
    <div class="portfolio__slide">
-        <img src="portfolio/portfolio-47.jpg" alt="Интерьер 47" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-47.jpg" alt="Интерьер 47" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-48.jpg" alt="Интерьер 48" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-48.jpg" alt="Интерьер 48" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-49.jpg" alt="Интерьер 49" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-49.jpg" alt="Интерьер 49" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-50.jpg" alt="Интерьер 50" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-50.jpg" alt="Интерьер 50" class="portfolio__image portfolio__image--full">
       </div>
 <div class="portfolio__slide">
-      <img src="portfolio/portfolio-51.jpg" alt="Интерьер 51" class="portfolio__image">
+      <img src="img/portfolio/portfolio-51.jpg" alt="Интерьер 51" class="portfolio__image">
     </div>
     <div class="portfolio__slide">
-        <img src="portfolio/portfolio-52.jpg" alt="Интерьер 52" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-52.jpg" alt="Интерьер 52" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-53.jpg" alt="Интерьер 53" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-53.jpg" alt="Интерьер 53" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-54.jpg" alt="Интерьер 54" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-54.jpg" alt="Интерьер 54" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-55.jpg" alt="Интерьер 55" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-55.jpg" alt="Интерьер 55" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-56.jpg" alt="Интерьер 56" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-56.jpg" alt="Интерьер 56" class="portfolio__image portfolio__image--full">
       </div>
 <div class="portfolio__slide">
-      <img src="portfolio/portfolio-57.jpg" alt="Интерьер 57" class="portfolio__image">
+      <img src="img/portfolio/portfolio-57.jpg" alt="Интерьер 57" class="portfolio__image">
     </div>
     <div class="portfolio__slide">
-        <img src="portfolio/portfolio-58.jpg" alt="Интерьер 58" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-58.jpg" alt="Интерьер 58" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-59.jpg" alt="Интерьер 59" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-59.jpg" alt="Интерьер 59" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-60.jpg" alt="Интерьер 60" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-60.jpg" alt="Интерьер 60" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-61.jpg" alt="Интерьер 61" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-61.jpg" alt="Интерьер 61" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-62.jpg" alt="Интерьер 62" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-62.jpg" alt="Интерьер 62" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-63.jpg" alt="Интерьер 63" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-63.jpg" alt="Интерьер 63" class="portfolio__image portfolio__image--full">
       </div>
 <div class="portfolio__slide">
-        <img src="portfolio/portfolio-64.jpg" alt="Интерьер 64" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-64.jpg" alt="Интерьер 64" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-      <img src="portfolio/portfolio-65.jpg" alt="Интерьер 65" class="portfolio__image">
+      <img src="img/portfolio/portfolio-65.jpg" alt="Интерьер 65" class="portfolio__image">
     </div>
     <div class="portfolio__slide">
-      <img src="portfolio/portfolio-66.jpg" alt="Интерьер 66" class="portfolio__image">
+      <img src="img/portfolio/portfolio-66.jpg" alt="Интерьер 66" class="portfolio__image">
     </div>
     <div class="portfolio__slide">
-        <img src="portfolio/portfolio-67.jpg" alt="Интерьер 67" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-67.jpg" alt="Интерьер 67" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-68.jpg" alt="Интерьер 68" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-68.jpg" alt="Интерьер 68" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-69.jpg" alt="Интерьер 69" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-69.jpg" alt="Интерьер 69" class="portfolio__image portfolio__image--full">
       </div>
       <div class="portfolio__slide">
-        <img src="portfolio/portfolio-70.jpg" alt="Интерьер 70" class="portfolio__image portfolio__image--full">
+        <img src="img/portfolio/portfolio-70.jpg" alt="Интерьер 70" class="portfolio__image portfolio__image--full">
       </div>
   </div>
   <div class="portfolio__controls">
@@ -334,94 +438,7 @@
     <button class="portfolio__arrow portfolio__arrow--next" type="button">&#8594;</button>
   </div>
 </div>
-   
 
-    <!-- 3. Жилые интерьеры -->
-   <section class="portfolio" id="portfolio">
-  <div class="portfolio__inner">
-    <h2 class="portfolio__title">ЖИЛЫЕ ИНТЕРЬЕРЫ</h2>
-<div class="portfolio__section ">
-      <div class="portfolio__slider" data-slider>
-  <div class="portfolio__slides">
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-23.jpg" alt="Интерьер 23" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-24.jpg" alt="Интерьер 24" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-25.jpg" alt="Интерьер 25" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-26.jpg" alt="Интерьер 26" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-27.jpg" alt="Интерьер 27" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-28.jpg" alt="Интерьер 28" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-29.jpg" alt="Интерьер 29" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-30.jpg" alt="Интерьер 30" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-31.jpg" alt="Интерьер 31" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-32.jpg" alt="Интерьер 32" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-33.jpg" alt="Интерьер 33" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-34.jpg" alt="Интерьер 34" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-35.jpg" alt="Интерьер 35" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-36.jpg" alt="Интерьер 36" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-37.jpg" alt="Интерьер 37" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-38.jpg" alt="Интерьер 38" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-39.jpg" alt="Интерьер 39" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-40.jpg" alt="Интерьер 40" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-41.jpg" alt="Интерьер 41" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-42.jpg" alt="Интерьер 42" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-43.jpg" alt="Интерьер 43" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-44.jpg" alt="Интерьер 44" class="portfolio__image portfolio__image--full">
-      </div>
-      <div class="portfolio__slide">
-        <img src="portfolio/portfolio-45.jpg" alt="Интерьер 45" class="portfolio__image portfolio__image--full">
-      </div> 
-    </div> <!-- portfolio__slides -->
-  <div class="portfolio__controls">
-    <button class="portfolio__arrow portfolio__arrow--prev" type="button">←</button>
-    <button class="portfolio__arrow portfolio__arrow--next" type="button">→</button>
-  </div>
-</div> <!-- portfolio__slider -->
-</div> <!-- portfolio__section -->
-</div> <!-- portfolio__inner -->
-</section> <!-- portfolio -->
-  
 <section class="contacts" id="contacts">
   <div class="contacts__card">
     <h2 class="contacts__title">Связаться со мной</h2>
@@ -438,22 +455,20 @@
 
     <div class="contacts__icons">
       <!-- сюда вставишь маленькие svg/png иконки соцсетей -->
-      <a href="https://wa.clck.bar/79687100285" target="_blank"><img src="icons/WA.svg" alt="WhatsApp"></a>
-      <a href="https://t.me/sarg_rips" target="_blank"><img src="icons/telegram.svg" alt="Telegram"></a>
-      <a href="https://www.instagram.com/sargsyan_ripsi_" target="_blank"><img src="icons/instagram.svg" alt="instagram"></a>
-      <a href="mailto:sargrips2002@gmail.com"><img src="icons/gmail.svg" alt="gmail"></a>
-      <a href="https://www.behance.net/3dinteror-dezign" target="_blank"><img src="icons/behance.svg" alt="behance"></a>
+      <a href="https://wa.clck.bar/79687100285" target="_blank"><img src="img/icons/WA.svg" alt="WhatsApp"></a>
+      <a href="https://t.me/sarg_rips" target="_blank"><img src="img/icons/telegram.svg" alt="Telegram"></a>
+      <a href="https://www.instagram.com/sargsyan_ripsi_" target="_blank"><img src="img/icons/instagram.svg" alt="instagram"></a>
+      <a href="mailto:sargrips2002@gmail.com"><img src="img/icons/gmail.svg" alt="gmail"></a>
+      <a href="https://www.behance.net/3dinteror-dezign" target="_blank"><img src="img/icons/behance.svg" alt="behance"></a>
     </div>
   </div>
 </section>
 
-    <!-- дальше добавишь: Услуги, Портфолио, Контакты -->
   </main>
 
-  <!-- ВСЕ скрипты всегда ставим перед закрывающим body -->
-  <script src="script.js" defer></script>
-     
-</body>
+
+
+
 
 <!-- ЕДИНСТВЕННЫЙ футер -->
 <footer class="footer">
@@ -485,13 +500,7 @@
     </p>
   </div>
 </footer>
-
+<script src="script.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
 

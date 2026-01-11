@@ -1,5 +1,4 @@
 /* ===== ОБЩИЕ НАСТРОЙКИ ===== */
-
 body {
   margin: 0;
   background-color: #dfddd7; /* основной светлый цвет сайта */
@@ -8,8 +7,7 @@ body {
 }
 
 
-/* ===== ШАПКА ===== */
-
+/* =====ДЕСКТОПНАЯ ШАПКА ===== */
 .header {
   position: sticky;
   top: 0;
@@ -17,6 +15,11 @@ body {
   background-color: #4A4D50;
   padding: 20px 80px;
   box-shadow: 0 2px 8px rgba(253, 253, 253, 0.918);
+}
+
+.header__inner {
+  display: flex;
+  justify-content: center;
 }
 
 .header__nav {
@@ -34,9 +37,13 @@ body {
   font-weight: 500;
 }
 
+/* бургер скрыт на десктопе */
+.burger {
+  display: none;
+}
+
 
 /* ===== ПЕРВЫЙ ЭКРАН (HERO) ===== */
-
 .hero {
   position: relative;
   min-height: 100vh;
@@ -119,56 +126,44 @@ body {
 
 
 /* ===== БЛОК «О СЕБЕ» ===== */
-
 /* тёмная полоса на всю ширину */
 .about {
   padding: 70px 0 80px;
-  background-color: #4A4D50;             /* запасной цвет */
-  background-image: url("img/about-photo.png"); /* твой PNG-фрейм */
-  background-size: contain;                
+  background-color: #4A4D50;
+  background-image: url("img/about-photo.png");
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-/* контент по центру */
-/*  12 колонок точно как в Figma */
-.about__inner {
+.about__inner {  /* ← Grid */
   display: grid;
-  grid-template-columns: repeat(12, 1fr);  /* 12 равных колонок */
+  grid-template-columns: repeat(12, 1fr);
   gap: 48px;
   max-width: 1040px;
   margin: 0 auto;
   padding: 32px 56px;
-  justify-content: center;  /* ← ВСЕГДА ПО ЦЕНТРУ */
+  justify-content: center;
 }
 
-/* Фото = 4 колонки слева */
 .about__photo-wrapper {
-  grid-column: 2 / 6;  /* колонки 2-5 из 12 (центрировано) */
+  grid-column: 2 / 6;
   margin-top: 20px;
 }
-
-/* Текст = 6 колонок справа */
 .about__content {
-  grid-column: 6 / 12;  /* колонки 6-11 из 12 (центрировано) */
+  grid-column: 6 / 12;
   color: #dfddd7;
-  justify-self: end;  /* ← Текст прижимается к правому краю сетки */
-  max-width: 520px;   /* ограничиваем ширину текста */
-}
-
-
-/* фото слева */
-.about__photo-wrapper {
-  flex: 0 0 380px;
-  margin-top: 20px; /* увеличивай/уменьшай это значение */
+  max-width: 520px;
 }
 
 .about__photo {
   width: 100%;
   height: auto;
-  border-radius: 0%; /* без скругления */
+  border-radius: 0;
   object-fit: cover;
+  display: block;
 }
+
 /* линия + подпись под фото */
 .about__line-caption {
   display: flex;
@@ -186,20 +181,22 @@ body {
 
 /* текст справа */
 .about__content {
-  flex: 1;
-  color: #dfddd7;
-  margin-top: 10px; /* аккуратно приподнимает текст */
+ grid-column: 6 / 12;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .about__title {
+  grid-column: 6 / 12;      /* заголовок справа, как текст */
   font-size: 26px;
-  margin: 0 0 24px;
+  margin: 20 25 15px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
+  color: #dfddd7;
 }
 
 .about__text {
-  margin: 0 0 14px;
+margin: 0 0 14px;
   line-height: 1.6;
   max-width: 520px;
   color: #dfddd7;
@@ -234,10 +231,17 @@ body {
 
 .about__signature-name {
   font-size: 26px;      /* как .about__title «О себе» */
-  font-weight: 600;     /* можно 600, чтобы смотрелось как заголовок */
+  font-weight: 600;    
 }
-/* ===== УСЛУГИ ===== */
 
+@media (min-width: 769px) {
+  .about__photo-wrapper {
+    display: none;
+  }
+}
+
+
+/* ===== УСЛУГИ ===== */
 .services {
   padding: 80px 0;
   background-color: #E6E5E1; /* как фон страницы */
@@ -249,6 +253,16 @@ body {
   padding: 0 56px;
 }
 
+.services__image-wrapper {
+  grid-column: 3 / 11; 
+  display: none;  /* скрыто на десктопе */
+  justify-content: center;
+}
+.services__image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
 .services__title {
   font-size: 28px;
   text-transform: uppercase;
@@ -291,7 +305,7 @@ body {
   grid-template-columns: 1fr;      /* одна колонка */
   font-size: 14px;
   color: #3C3B37;
-  font-weight: 500; /* или 600, если нужен более заметный жирный */
+  font-weight: 500; 
 }
 .services__list {
   margin: 50px 0 0;
@@ -313,17 +327,17 @@ body {
   content: "";
   position: absolute;
   left: 0;
-  top: 4px; /* подстрой по высоте, если нужно */
+  top: 4px; 
   width: 16px;   /* размер иконки */
   height: 16px;
-  background-image: url("img/check-icon.png"); /* путь к твоей иконке */
+  background-image: url("img/check-icon.png"); /* путь к иконке */
   background-size: contain;
   background-repeat: no-repeat;
-  color: #3C3B37; /* тёмный, как шапка/блоки */
+  color: #3C3B37;
 }
 
 .steps {
-  background-color: #4A4D50;  /* как в макете */
+  background-color: #4A4D50;  
   padding: 70px 0 80px;
 }
 
@@ -350,8 +364,8 @@ body {
   margin: 0 auto;
 }
 
-/* ===== СОСТАВ ТЕХНИЧЕСКОГО ЗАДАНИЯ ===== */
 
+/* ===== СОСТАВ ТЕХНИЧЕСКОГО ЗАДАНИЯ ===== */
 .brief {
   padding: 80px 0;
   background-color: #E6E5E1;
@@ -402,7 +416,6 @@ body {
   font-weight: 600;   /* или 700, если хочешь жирнее */
 }
 
-
 .brief__list {
   margin: 0 0 20px;
   padding-left: 20px;
@@ -415,8 +428,8 @@ body {
   margin-top: 6px;
 }
 
-/* ===== ПОРТФОЛИО ===== */
 
+/* ===== ПОРТФОЛИО ===== */
 .portfolio {
   padding: 80px 0;
   background-color: #E6E5E1;
@@ -437,11 +450,9 @@ body {
   color: #3C3B37;
 }
 
-
 .portfolio__section {
   margin-bottom: 80px;
 }
-
 
 /* картинка + стрелки */
 .portfolio__slider {
@@ -463,7 +474,8 @@ body {
 
 .portfolio__slides {
   display: flex;
-}  
+  transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);  
+}
 
 .portfolio__slide {
   flex: 0 0 100%;
@@ -475,7 +487,7 @@ body {
   width: 100%;
   height: 600px;       /* ← ФИКСИРОВАННАЯ высота вместо aspect-ratio */
   display: block;
-  border-radius: 4px;
+  border-radius: 0px;
   object-fit: cover;
 }
 
@@ -490,7 +502,6 @@ body {
   justify-content: center;
   gap: 32px;
 }
-
 
 .portfolio__arrow {
   width: 40px;
@@ -512,7 +523,7 @@ body {
 
 .contacts {
   padding: 80px 0 60px;
-  background-color: #E6E5E1;          /* фон как у страницы */
+  background-color: #E6E5E1;         
 }
 
 .contacts__card {
@@ -537,7 +548,7 @@ body {
   font-size: 14px;
   line-height: 1.6;
   color: #3C3B37;
-  font-weight: 500;   /* стало заметно жирнее */
+  font-weight: 500;   
 }
 
 .contacts__buttons {
@@ -545,7 +556,7 @@ body {
   flex-direction: column;
   gap: 12px;
   margin-bottom: 28px;
-  align-items: center;            /* центрируем как в макете */
+  align-items: center;           
 }
 
 .contacts__btn {
@@ -560,15 +571,15 @@ body {
   letter-spacing: 0.08em;
   border: 1px solid #4A4D50;
   transition: background-color 0.2s ease, color 0.2s ease;
-  max-width: 260px;               /* чтобы не были слишком длинными */
+  max-width: 260px;               
 }
 
 .contacts__line {
-  width: 150px;          /* длина линии, подгони под макет */
-  height: 2px;          /* «средняя» толщина */
+  width: 150px;          
+  height: 2px;          
   background-color: #3C3B37;  /* цвет как у линий/границ в макете */
   margin: 24px auto 16px;     /* отступ сверху от кнопок и снизу до иконок */
-  border-radius: 999px;       /* чтобы края были слегка скруглённые */
+  border-radius: 999px;       
 }
 
 .contacts__btn:hover {
@@ -591,9 +602,10 @@ body {
   transition: transform 0.2s ease;
 }
 
-.contacts-icons img:hover {
-  transform: scale(1.1); /* лёгкое увеличение при наведении */
+.contacts__icons img:hover {
+  transform: scale(1.1);
 }
+
 
 /* Футер */
 .footer {
@@ -607,7 +619,7 @@ body {
 .footer-social {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;         /* было 150px — слишком много */
+  gap: 40px;         
   justify-content: center;
   margin-bottom: 10px;
 }
@@ -638,7 +650,7 @@ body {
 /* ЗЕЛЁНЫЙ блок навигации */
 .footer-nav-block {
   background: #E6E5E1;
-  position: absolute;        /* ← АБСОЛЮТНО */
+  position: absolute;       
   top: -5px;                 /* ← 20px от верха футера */
   left: 50%;
   transform: translateX(-50%); /* центрируем */
@@ -663,8 +675,656 @@ body {
 }
 
 .footer-nav a:hover {
-  color: #2B2B2B;                  /* тёмный на зелёном */
-  font-weight: 600;    /* ← жирный при hover */
+  color: #2B2B2B;                  
+  font-weight: 600;    
 }
 
 
+  /* ===== МОБИЛЬНАЯ ВЕРСИЯ (до 768px) ===== */
+@media (max-width: 768px) {
+
+  /* МОБИЛЬНЫЙ ФОН С !IMPORTANT */
+  body {
+    font-size: 14px !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+  }
+
+  /*  ШАПКА ФИКСИРУЕТСЯ */
+  .header {
+    position: fixed !important;  /* fixed вместо sticky */
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    background-color: #4A4D50 !important;
+    padding: 15px 20px !important;  /* компактнее */
+  }
+
+  /* бургер меню */
+  .header__inner {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .burger {
+    display: flex;
+    width: 36px;
+    height: 28px;
+    padding: 0;
+    border: none;
+    background: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .burger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #dfddd7;
+    border-radius: 999px;
+    transition: all 0.3s ease;
+  }
+
+  .burger.active {
+    transform: rotate(90deg);
+  }
+
+  .burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .burger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  .header__nav {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 55vw;
+    height: 550px;
+    max-height: 80vh;
+    background-color: #4A4D50;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    padding: 32px 24px;
+    border-radius: 0px 0px 0 0;
+    box-shadow: -8px 0 30px rgba(0,0,0,0.5);
+    overflow-y: auto;
+  }
+
+  .header__nav .header__link {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .header__nav.active {
+    display: flex;
+  }
+
+  /* отступы секций */
+  .services, .steps, .brief, .portfolio, .contacts {
+    padding: 32px 0;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 200px 16px 40px;
+    box-sizing: border-box;
+  }
+
+  .hero__content {
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .hero__subtitle {
+    font-size: 12px;
+    letter-spacing: 0.13em;
+    font-weight: 600;
+  }
+
+  .hero__title {
+    font-size: 28px;
+  }
+
+  .hero__button {
+    width: 100%;
+    max-width: 200px;
+    margin-top: -5px;
+  }
+
+  
+ /* О СЕБЕ — ТОЛЬКО МОБИЛКА */
+  .about {
+    padding-top: 50px !important;  /* отступ от главного экрана до заголовка */
+    padding-bottom: 60px !important;
+    background-color: #4A4D50;
+    background-image: none;
+  }
+  
+  .about__inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 16px !important;
+    
+  }
+
+  .about__title {
+    order: 1 !important;
+    text-align: center !important;
+    margin-bottom: 30px !important;  /* ← больший отступ */
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    color: #E6E5E1 !important;
+  }
+
+  .about__photo-wrapper {
+    order: 2 !important;
+    max-width: 260px !important;  /* БОЛЬШЕ ФОТО */
+    margin: 0 auto 32px auto !important;
+  }
+
+  .about__photo {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 0px !important;
+  }
+
+  .about__content {
+    order: 3 !important;
+    max-width: 100% !important;
+    text-align: left !important;
+  }
+
+  .about__text,
+  .about__skills-title,
+  .about__list,
+  .about__signature {
+    text-align: left !important;
+    margin-bottom: 16px !important;  /* отступы ТОЛЬКО на мобилке */
+  }
+
+
+/* УСЛУГИ — CSS ТАБЛИЦА ДЛЯ МОБИЛКИ */
+  .services__title {
+    text-align: center !important;
+    margin-bottom: 30px !important;
+    margin: 40px 0 30px 0 !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    color: #4A4D50 !important;
+  }
+
+  .services__table {
+  display: block !important;
+  background: #E6E5E1;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 30px -30px 0 -30px !important;  /* ← МЕНЬШЕ ОТРИЦАТЕЛЬНЫХ */
+  width: calc(100% + 60px) !important;    /* ← СООТВЕТСТВУЕТ margin */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+  .services__row {
+    display: block !important; /* вертикальная таблица */
+    padding: 24px 24px !important;
+    border-bottom: 1px solid #C3C2BD !important;
+    font-size: 16px !important;
+  }
+
+  .services__row--header {
+    background: #4A4D50 !important;
+    color: #E6E5E1 !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 15px !important;
+    padding: 22px 24px !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .services__name {
+    font-weight: 600 !important;
+    margin-bottom: 5px !important;
+    display: block !important;
+    font-size: 14px !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .services__price {
+    color: #FF6B35 !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    display: block !important;
+    margin-top: 10px !important;  /* ← ОПУСКАЕТ ВНИЗ */
+  }
+
+ .services__row--full {
+  background: #f8f9fa !important;
+  padding: 22px 24px !important;  /* ← ТАКИЕ ЖЕ ОТСТУПЫ как у других строк */
+  font-size: 15px !important;
+  font-style: italic !important;
+  line-height: 1.6 !important;
+  border-radius: 0 0 12px 12px !important;
+  margin: 0 !important;           /* ← УБИРАЕМ авто-отступы */
+  width: 89% !important;         /* ← НА ВСЮ ШИРИНУ ТАБЛИЦЫ */
+  text-align: center !important;  /* ← ТЕКСТ ПО ЦЕНТРУ */
+}
+
+/*  ОРАНЖЕВЫЕ ГАЛКИ НА МОБИЛ */
+.services__list-item {
+  padding: 16px 0 16px 28px !important;
+  position: relative !important;
+  list-style: none !important;
+}
+
+.services__list-item::before {
+  content: "✓" !important;
+  position: absolute !important;
+  left: 2px !important;
+  top: 18px !important;
+  transform: none !important;
+  color: #FF6B35 !important;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  z-index: 10 !important;
+  background-image: none !important;
+  background: none !important;
+}
+
+.services__list {
+  padding: 0 !important;
+  margin: 30px -32px 0 -32px!important;
+  max-width: calc(100% + 64px) !important;
+}
+
+.services__list-item {
+  padding: 16px 24px 16px 40px !important;
+  position: relative !important;
+  list-style: none !important;
+  margin-bottom: 0 !important;
+}
+
+
+  /* Этапы (steps) */
+  .steps {
+    padding: 40px 0 50px;
+  }
+
+  .steps__inner {
+    padding: 0 16px;
+  }
+
+  .steps__title {
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: #E6E5E1 !important;
+  text-align: center !important;
+  margin-bottom: 20px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+}
+  
+.steps__image {
+  content: url("img/stepsmobil.png") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  }
+  
+.brief {
+    padding: 40px 0 !important;
+  }
+
+  .brief__inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 24px !important;
+    padding: 0 16px !important;
+    max-width: 100% !important;
+  width: 100% !important; 
+  box-sizing: border-box !important; 
+  overflow-x: hidden !important;
+  }
+  
+  .brief__content {
+    display: contents !important;
+  }
+
+  .brief__title {
+    display: block !important;
+    order: -2 !important;
+    font-size: 22px !important;
+    color: #4A4D50 !important;
+    text-align: center !important;
+    margin: 0 0 8px 0 !important;
+  }
+
+ .brief__gallery {
+  order: -1 !important;
+  width: 100% !important;
+  max-width: 420px !important;
+  margin: 0 auto !important;
+  text-align: center !important; 
+}
+
+.brief__image {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+  /* Остальной контент */
+  .brief__text, .brief__list {
+    order: 0 !important;
+    width: 100% !important;
+    margin-top: -16px !important; 
+  }
+
+
+  /* Портфолио */
+ 
+.portfolio {
+  padding: 20px 0 40px !important;
+}
+/* ПРОСТРАНСТВО МЕЖДУ СЛАЙДЕРАМИ */
+.portfolio__section {
+  margin-bottom: 40px !important;
+}
+
+.portfolio__section + .portfolio__section {
+  margin-top: 40px !important;  
+}
+.portfolio__inner {
+  padding: 0 16px !important;
+}
+
+.portfolio__title,
+.portfolio__section-title {
+  font-size: 20px !important;
+ margin: 0 0 20px 0 !important;
+  text-align: center !important;
+  white-space: nowrap !important; 
+  overflow: hidden !important;
+}
+
+.portfolio__slider {
+  max-width: 100% !important;
+  width: 100% !important;
+  height: 260px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scroll-snap-type: x mandatory !important;
+  scrollbar-width: none !important;
+  -webkit-overflow-scrolling: touch !important;
+  scroll-behavior: smooth !important;
+}
+
+.portfolio__slider::-webkit-scrollbar {
+  display: none !important;
+}
+
+.portfolio__slides {
+  display: flex !important;
+  width: 400% !important;
+}
+
+.portfolio__slide {
+  flex: 0 0 25% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+  min-height: 260px !important; 
+}
+.portfolio__image,
+.portfolio__image--full {
+  width: 280px !important; 
+  height: 240px !important;
+  max-width: 280px !important;
+  max-height: 240px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+.portfolio__controls,
+.portfolio__arrow {
+  display: none !important;
+}
+
+/*  МОДАЛКА — КАРТИНКИ ПО ЦЕНТРУ + ВИДНЫЕ КНОПКИ */
+.portfolio-modal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0,0,0,0.85) !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+
+.modal-gallery {
+  position: relative !important;
+  width: 90vw !important;
+  height: 90vh !important;
+  max-width: 800px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.modal-slide {
+  position: absolute !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 0px !important;
+  opacity: 0 !important;
+  transform: scale(0.8) !important;
+  transition: all 0.4s ease !important;
+}
+
+.modal-slide.active {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+/*  СТРЕЛКИ ВСЕГДА ВИДНЫ */
+.modal-prev, .modal-next {
+  position: fixed !important;  /* ← FIXED не теряются */
+  top: 50% !important;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50% !important;
+  border: none !important;
+  background: rgba(255,255,255,0.9) !important;
+  color: #333 !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+  transition: all 0.3s ease !important;
+  z-index: 100000 !important;
+}
+
+.modal-prev { 
+  left: 20px !important; 
+  transform: translateY(-50%) !important;
+}
+
+.modal-next { 
+  right: 20px !important; 
+  transform: translateY(-50%) !important;
+}
+
+.modal-prev:hover, .modal-next:hover {
+  background: rgba(255,255,255,1) !important;
+  transform: translateY(-50%) scale(1.1) !important;
+}
+
+/*  КРЕСТИК ВСЕГДА ВИДЕН */
+.modal-close {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  border: none !important;
+  background: rgba(255,255,255,0.9) !important;
+  color: #333 !important;
+  font-size: 28px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+  z-index: 100000 !important;
+}
+
+
+/* МОБИЛЬНАЯ ВЕРСИЯ КОНТАКТОВ*/
+.contacts {
+    padding: 60px 16px !important;
+    background: #E6E5E1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .contacts__card {
+    width: 100% !important;
+    max-width: 400px !important;
+    margin: 0 !important;
+    padding: 45px 28px !important;
+    background: #D9D9D9 !important;
+    border-radius: 16px !important;
+  }
+/* СТИЛЬ КАК У ЗАГОЛОВКОВ */
+  .contacts__title {
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    color: #4A4D50 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.12em !important;
+    margin: 0 0 16px 0 !important;
+    /*  ПЕРЕНОС СЛОВА "со" */
+    word-break: break-word !important;
+    line-height: 1.1 !important;
+    max-width: 200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* БОЛЬШЕ ЗАКРУГЛЕНИЕ КНОПОК */
+  .contacts__btn {
+    border-radius: 40px !important;
+    padding: 16px 32px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+  }
+
+ .contacts__subtitle {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+    margin: 0 auto 36px !important;
+    max-width: 320px !important;
+    text-align: center !important;
+    padding: 0 12px !important;
+  }
+
+
+/* ФУТЕР */
+  .footer {
+    padding: 80px 20px 50px !important; 
+  }
+
+  .footer-nav-block {
+    max-width: 100% !important;
+    padding: 18px 28px !important; 
+    margin-bottom: 36px !important; 
+    border-radius: 20px !important;
+  }
+
+  .footer-nav {
+    gap: 28px !important; 
+    flex-wrap: nowrap !important; 
+    justify-content: center !important;
+  }
+
+  .footer-nav a {
+    font-size: 14px !important; 
+    font-weight: 500 !important;
+  }
+
+  .footer-social {
+    flex-direction: column !important;
+    gap: 24px !important;
+    margin-bottom: 32px !important;
+    padding: 0 12px !important;
+  }
+
+  .footer-social a {
+    font-size: 13px !important;
+    padding: 12px 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.12) !important;
+    opacity: 0.9 !important;
+    transition: opacity 0.3s !important;
+  }
+
+  .footer-social a:hover {
+    opacity: 1 !important;
+  }
+
+  .footer-text {
+    width: 100% !important;
+    font-size: 11px !important;
+    padding: 24px 0 0 !important;
+    border-top: 1px solid rgba(255,255,255,0.15) !important;
+  }
+
+html, body {
+  overflow-x: hidden !important;
+}
+
+.portfolio__slider {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 auto 28px !important;
+}
+}
