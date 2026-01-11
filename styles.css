@@ -232,8 +232,9 @@ margin: 0 0 14px;
 
 @media (min-width: 769px) {
   .about__photo-wrapper {
-    display: none;
+    display: block;    /* ✅ РИПСИК ПОКАЖЕТСЯ НА ДЕСКТОПЕ */
   }
+
 }
 
 
@@ -1325,6 +1326,7 @@ html, body {
 }
 
 }
+
 
 
 
