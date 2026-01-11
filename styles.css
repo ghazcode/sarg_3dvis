@@ -231,10 +231,14 @@ margin: 0 0 14px;
 }
 
 @media (min-width: 769px) {
-  .about__photo-wrapper {
-    display: block;    /* ✅ РИПСИК ПОКАЖЕТСЯ НА ДЕСКТОПЕ */
+ .about__photo {
+    background-image: url("img/about-photo.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
   }
-
+  .about__photo-wrapper {
+    display: block !important;
+  }
 }
 
 
@@ -1326,6 +1330,7 @@ html, body {
 }
 
 }
+
 
 
 
