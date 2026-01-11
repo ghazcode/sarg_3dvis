@@ -130,10 +130,6 @@ body {
 .about {
   padding: 70px 0 80px;
   background-color: #4A4D50;
-  background-image: url("img/about-photo.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 .about__inner {  /* ← Grid */
@@ -817,7 +813,7 @@ margin: 0 0 14px;
   }
 
   
- /* О СЕБЕ — ТОЛЬКО МОБИЛКА */
+ /* О СЕБЕ  МОБИЛКА */
 .about {
     padding-top: 50px !important;
     padding-bottom: 60px !important;
@@ -1330,6 +1326,7 @@ html, body {
 }
 
 }
+
 
 
 
