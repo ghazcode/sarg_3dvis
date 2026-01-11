@@ -818,12 +818,15 @@ margin: 0 0 14px;
 
   
  /* О СЕБЕ — ТОЛЬКО МОБИЛКА */
- .about {
-    padding-top: 50px !important;  /* отступ от главного экрана до заголовка */
+.about {
+    padding-top: 50px !important;
     padding-bottom: 60px !important;
     background-color: #4A4D50;
     background-image: url("/ripsik.jpg") !important;
-    
+    background-size: 400px auto !important; 
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+
   }
   
   .about__inner {
@@ -1330,6 +1333,7 @@ html, body {
 }
 
 }
+
 
 
 
