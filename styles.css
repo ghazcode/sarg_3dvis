@@ -173,11 +173,16 @@ body {
 @media (min-width: 769px) {
   .about {
     background-image: url("about-photo.png");
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     min-height: 500px;
   }
-  .about__inner {
+
+   .about__photo.mobile-photo {
+    display: none !important;
+  }
+  
+ .about__inner {
     display: grid !important;
     grid-template-columns: repeat(12, 1fr);
     gap: 48px;
@@ -185,6 +190,7 @@ body {
     margin: 0 auto;
     padding: 32px 56px;
   }
+  
   .about__photo-wrapper { 
     grid-column: 2 / 6; 
   }
@@ -1349,6 +1355,7 @@ html, body {
   margin: 0 auto 28px !important;
 }
 }
+
 
 
 
