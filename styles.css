@@ -235,11 +235,11 @@ margin: 0 0 14px;
     display: grid !important;
     grid-template-columns: repeat(12, 1fr) !important;
     gap: 48px !important;
-    padding: 32px 56px !important;  /* ← ДОБАВЬ */
+    padding: 32px 56px !important;
   }
   .about__photo-wrapper {
     grid-column: 2 / 6 !important;
-    margin-top: 20px !important;  /* ← ДОБАВЬ */
+    margin-top: 20px !important;
   }
   .about__content {
     grid-column: 6 / 12 !important;
@@ -248,6 +248,9 @@ margin: 0 0 14px;
     background-image: url("about-photo.png") !important;
     height: 400px !important;
     width: 100% !important;
+    content: "" !important;              /* ← УКРЫВАЕТ <img> */
+    background-size: cover !important;   /* ← РАСТЯГИВАЕТ PNG */
+    background-position: center !important;
   }
 }
 
@@ -857,8 +860,6 @@ margin: 0 0 14px;
   }
 
     .about__photo {
-  /* background-image: none !important; ← УДАЛИ */
-  content: normal !important; 
   width: 100% !important;
   height: auto !important;
   border-radius: 0px !important;
@@ -1338,6 +1339,7 @@ html, body {
 }
 
 }
+
 
 
 
