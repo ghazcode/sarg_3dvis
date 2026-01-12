@@ -130,26 +130,23 @@ body {
 .about {
   padding: 70px 0 80px;
   background-color: #4A4D50;
-  background-image: url("img/about-photo.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  color: #dfddd7;
+  position: relative;
 }
 
-.about__inner {  /* ← Grid */
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 48px;
+.about__inner {
   max-width: 1040px;
   margin: 0 auto;
   padding: 32px 56px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 48px;
 }
 
 .about__photo-wrapper {
   grid-column: 2 / 6;
-  margin-top: 20px;
 }
+
 .about__content {
   grid-column: 6 / 12;
   color: #dfddd7;
@@ -235,8 +232,26 @@ margin: 0 0 14px;
 }
 
 @media (min-width: 769px) {
+.about {
+    background-image: url("about-photo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 500px; /* задаём высоту */
+  }
+  
   .about__photo-wrapper {
-    display: none;
+    /* фон работает, поэтому img не нужны */
+  }
+  
+  .about__photo.mobile-photo,
+  .about__photo.desktop-bg {
+    display: none; /* скрываем ВСЕ картинки */
+  }
+  
+  .about__content {
+    grid-column: 6 / 12;
+    max-width: 520px;
   }
 }
 
@@ -817,56 +832,51 @@ margin: 0 0 14px;
   }
 
   
- /* О СЕБЕ — ТОЛЬКО МОБИЛКА */
-  .about {
-    padding-top: 50px !important;  /* отступ от главного экрана до заголовка */
-    padding-bottom: 60px !important;
-    background-color: #4A4D50;
-    background-image: none;
-  }
-  
-  .about__inner {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    padding: 0 16px !important;
-    
-  }
+/* О СЕБЕ — МОБИЛЬНАЯ ВЕРСИЯ */
+.about {
+  background-image: none !important; /* убираем фон */
+  padding-top: 120px !important; /* под fixed header */
+}
 
-  .about__title {
-    order: 1 !important;
-    text-align: center !important;
-    margin-bottom: 30px !important;  /* ← больший отступ */
-    font-size: 22px !important;
-    font-weight: 600 !important;
-    color: #E6E5E1 !important;
-  }
+.about__inner {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 0 16px !important;
+  gap: 32px !important;
+}
 
-  .about__photo-wrapper {
-    order: 2 !important;
-    max-width: 260px !important;  /* БОЛЬШЕ ФОТО */
-    margin: 0 auto 32px auto !important;
-  }
+.about__title {
+  order: 1 !important; /* 1. ЗАГОЛОВОК */
+  text-align: center !important;
+  font-size: 22px !important;
+  margin-bottom: 30px !important;
+  color: #dfddd7 !important;
+}
 
-  .about__photo {
-    width: 100% !important;
-    height: auto !important;
-    border-radius: 0px !important;
-  }
+.about__photo-wrapper {
+  order: 2 !important; /* 2. ФОТО ПОСЛЕ заголовка */
+  max-width: 260px !important;
+  margin: 0 auto 24px !important;
+}
 
-  .about__content {
-    order: 3 !important;
-    max-width: 100% !important;
-    text-align: left !important;
-  }
+.about__photo.mobile-photo {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 12px !important;
+  display: block !important;
+  object-fit: cover !important;
+}
 
-  .about__text,
-  .about__skills-title,
-  .about__list,
-  .about__signature {
-    text-align: left !important;
-    margin-bottom: 16px !important;  /* отступы ТОЛЬКО на мобилке */
-  }
+.about__photo.desktop-bg {
+  display: none !important; /* скрываем десктопное фото */
+}
+
+.about__content {
+  order: 3 !important; /* 3. ТЕКСТ */
+  max-width: 100% !important;
+  text-align: left !important;
+}
 
 
 /* УСЛУГИ — CSS ТАБЛИЦА ДЛЯ МОБИЛКИ */
@@ -1328,3 +1338,4 @@ html, body {
   margin: 0 auto 28px !important;
 }
 }
+
