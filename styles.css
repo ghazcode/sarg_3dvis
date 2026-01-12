@@ -840,6 +840,7 @@ margin: 0 0 14px;
   flex-direction: column !important;
   display: flex !important;
   padding: 0 16px !important;
+   gap: 30px !important;
 }
 
   .about__title {
@@ -1337,6 +1338,7 @@ html, body {
 }
 
 }
+
 
 
 
