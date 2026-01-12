@@ -882,7 +882,7 @@ margin: 0 0 14px;
   margin: 0 auto 32px auto !important;
 }
 
-.about__photo {
+.mobile-photo {
   width: 100% !important;
   max-width: 260px !important;
   height: auto !important;
@@ -896,7 +896,7 @@ margin: 0 0 14px;
   z-index: 2 !important;
 }
 
-* ДЕСКТОП: about-photo.png ФОН */
+/* ДЕСКТОП about-photo.png */
 @media screen and (min-width: 769px) {
   .about__inner {
     display: grid !important;
@@ -907,29 +907,27 @@ margin: 0 0 14px;
     padding: 32px 56px !important;
   }
   
-  .about__photo-wrapper {
-    grid-column: 1 !important;
+  .about__photo-wrapper { grid-column: 1 !important; }
+  .about__content { grid-column: 2 !important; }
+  
+  /* 🔥 ПРАВИЛЬНО: мобилька СКРЫТА */
+  .mobile-photo {
+    display: none !important;
   }
   
-  .about__content {
-    grid-column: 2 !important;
-    text-align: left !important;
-  }
-  
-  /* about-photo.png как фон */
+  /* 🔥 ПРАВИЛЬНО: desktop ПОКАЗАН */
   .desktop-bg {
     width: 400px !important;
     height: 400px !important;
-    background-image: url("https://raw.githubusercontent.com/ghazcode/sarg_3dvis/main/about-photo.png") !important;
-    background-size: cover !important;
-    background-position: center !important;
+    object-fit: cover !important;
     border-radius: 12px !important;
+    display: block !important;  /* ← ИЗМЕНИ none НА block */
   }
-  
-  /* 🔥 СКРЫТЬ ripsik.jpg на десктопе */
-  .about__photo:not(.desktop-bg) {
-    display: none !important;
-  }
+}
+
+/* МОБИЛКА скрыть desktop */
+@media screen and (max-width: 768px) {
+  .desktop-bg { display: none !important; }
 }
 
 /* УСЛУГИ — CSS ТАБЛИЦА ДЛЯ МОБИЛКИ */
@@ -1391,6 +1389,45 @@ html, body {
 }
 
 }
+  /* 🔥 ФИНАЛЬНЫЙ ФИКС "О СЕБЕ" — ПЕРЕКРЫВАЕТ ВСЁ */
+.mobile-photo {
+  width: 100% !important;
+  max-width: 260px !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+.desktop-bg {
+  display: none !important;
+  width: 400px !important;
+  height: 400px !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+}
+
+/* МОБИЛКА */
+@media screen and (max-width: 768px) {
+  .desktop-bg { display: none !important; }
+  .mobile-photo { display: block !important; }
+}
+
+/* ДЕСКТОП */
+@media screen and (min-width: 769px) {
+  .about__inner {
+    display: grid !important;
+    grid-template-columns: 400px 1fr !important;
+    gap: 48px !important;
+    padding: 32px 56px !important;
+  }
+  .about__photo-wrapper { grid-column: 1 !important; }
+  .about__content { grid-column: 2 !important; }
+  .desktop-bg { display: block !important; }
+  .mobile-photo { display: none !important; }
+}
+  
+
 
 
 
