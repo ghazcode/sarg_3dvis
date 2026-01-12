@@ -171,33 +171,34 @@ body {
 
 /* ДЕСКТОП */
 @media (min-width: 769px) {
-  .about {
-    background-image: url("about-photo.png");
-    background-size: contain;
-    background-position: center;
-    min-height: 500px;
-  }
+ .about {
+  padding: 70px 0 80px;
+  background-color: #4A4D50;
+  background-image: url("img/about-photo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+  
+ .about__inner {  /* ← Grid */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 48px;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 32px 56px;
+  justify-content: center;
+}
 
-   .about__photo.mobile-photo {
-    display: none !important;
-  }
-  
- .about__inner {
-    display: grid !important;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 48px;
-    max-width: 1040px;
-    margin: 0 auto;
-    padding: 32px 56px;
-  }
-  
-  .about__photo-wrapper { 
-    grid-column: 2 / 6; 
-  }
-  .about__content { 
-    grid-column: 6 / 12; 
-    max-width: 520px;
-  }
+.about__photo-wrapper {
+  grid-column: 2 / 6;
+  margin-top: 20px;
+}
+.about__content {
+  grid-column: 6 / 12;
+  color: #dfddd7;
+  max-width: 520px;
+}
   .about__title { 
     grid-column: 6 / 12; 
     text-align: left;
@@ -1355,6 +1356,7 @@ html, body {
   margin: 0 auto 28px !important;
 }
 }
+
 
 
 
