@@ -245,7 +245,7 @@ margin: 0 0 14px;
   
   .about__photo {
     height: 400px !important;
-    background-image: url("https://raw.githubusercontent.com/ghazcode/sarg_3dvis/main/about-photo.png") !important;
+    background-image: url("about-photo.png") !important;
     background-size: cover !important;
     background-position: center !important;
     border-radius: 0 !important;
