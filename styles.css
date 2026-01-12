@@ -130,6 +130,10 @@ body {
 .about {
   padding: 70px 0 80px;
   background-color: #4A4D50;
+  background-image: url("img/about-photo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .about__inner {  /* ← Grid */
@@ -185,7 +189,7 @@ body {
 .about__title {
   grid-column: 6 / 12;      /* заголовок справа, как текст */
   font-size: 26px;
-  margin: 20px 25px 15px;
+  margin: 20 25 15px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: #dfddd7;
@@ -230,48 +234,12 @@ margin: 0 0 14px;
   font-weight: 600;    
 }
 
-
-@media screen and (min-width: 769px) {
-  .about__inner {
-    display: grid !important;
-    grid-template-columns: 400px 1fr !important;
-    gap: 48px !important;
-    max-width: 1040px !important;
-    margin: 0 auto !important;
-    padding: 32px 56px !important;
-  }
-  
-  .about__photo-wrapper { 
-    grid-column: 1 !important;
-    max-width: 400px !important;
-  }
-  
-  .about__title { 
-    grid-column: 2 !important;
-    text-align: left !important;
-    margin-bottom: 16px !important;
-  }
-  
-  .about__content { 
-    grid-column: 2 !important;
-    text-align: left !important;
-  }
-  
-  /* 🔥 ТОЛЬКО ФОН about-photo.png */
-  .about__photo {
-    height: 400px !important;
-    background-image: url("https://raw.githubusercontent.com/ghazcode/sarg_3dvis/main/about-photo.png") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    border-radius: 12px !important;
-  }
-  
-  /* 🔥 СКРЫТЬ ripsik.jpg */
-  .about__photo img,
-  .about__photo-wrapper img {
-    display: none !important;
+@media (min-width: 769px) {
+  .about__photo-wrapper {
+    display: none;
   }
 }
+
 
 /* ===== УСЛУГИ ===== */
 .services {
@@ -849,86 +817,57 @@ margin: 0 0 14px;
   }
 
   
- /* О СЕБЕ  МОБИЛКА */
-
+ /* О СЕБЕ — ТОЛЬКО МОБИЛКА */
   .about {
-  padding-top: 50px !important;
-  padding-bottom: 60px !important;
-  background-color: #4A4D50;
-}
-
-.about__inner {
-  align-items: center !important;
-  flex-direction: column !important;
-  display: flex !important;
-  padding: 0 16px !important;
-  gap: 30px !important;
-  position: relative !important;
-}
-
-.about__title {
-  order: 1 !important;
-  text-align: center !important;
-  margin-bottom: 30px !important;
-  font-size: 22px !important;
-  font-weight: 600 !important;
-  color: #E6E5E1 !important;
-  z-index: 2 !important;
-}
-
-.about__photo-wrapper {
-  order: 2 !important;
-  max-width: 260px !important;
-  margin: 0 auto 32px auto !important;
-}
-
-.mobile-photo {
-  width: 100% !important;
-  max-width: 260px !important;
-  height: auto !important;
-  border-radius: 0 !important;
-  display: block !important;
-}
-.about__content {
-  order: 3 !important;
-  max-width: 100% !important;
-  text-align: left !important;
-  z-index: 2 !important;
-}
-
-/* ДЕСКТОП about-photo.png */
-@media screen and (min-width: 769px) {
+    padding-top: 50px !important;  /* отступ от главного экрана до заголовка */
+    padding-bottom: 60px !important;
+    background-color: #4A4D50;
+    background-image: none;
+  }
+  
   .about__inner {
-    display: grid !important;
-    grid-template-columns: 400px 1fr !important;
-    gap: 48px !important;
-    max-width: 1040px !important;
-    margin: 0 auto !important;
-    padding: 32px 56px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 16px !important;
+    
   }
-  
-  .about__photo-wrapper { grid-column: 1 !important; }
-  .about__content { grid-column: 2 !important; }
-  
-  /* 🔥 ПРАВИЛЬНО: мобилька СКРЫТА */
-  .mobile-photo {
-    display: none !important;
-  }
-  
-  /* 🔥 ПРАВИЛЬНО: desktop ПОКАЗАН */
-  .desktop-bg {
-    width: 400px !important;
-    height: 400px !important;
-    object-fit: cover !important;
-    border-radius: 12px !important;
-    display: block !important;  /* ← ИЗМЕНИ none НА block */
-  }
-}
 
-/* МОБИЛКА скрыть desktop */
-@media screen and (max-width: 768px) {
-  .desktop-bg { display: none !important; }
-}
+  .about__title {
+    order: 1 !important;
+    text-align: center !important;
+    margin-bottom: 30px !important;  /* ← больший отступ */
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    color: #E6E5E1 !important;
+  }
+
+  .about__photo-wrapper {
+    order: 2 !important;
+    max-width: 260px !important;  /* БОЛЬШЕ ФОТО */
+    margin: 0 auto 32px auto !important;
+  }
+
+  .about__photo {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 0px !important;
+  }
+
+  .about__content {
+    order: 3 !important;
+    max-width: 100% !important;
+    text-align: left !important;
+  }
+
+  .about__text,
+  .about__skills-title,
+  .about__list,
+  .about__signature {
+    text-align: left !important;
+    margin-bottom: 16px !important;  /* отступы ТОЛЬКО на мобилке */
+  }
+
 
 /* УСЛУГИ — CSS ТАБЛИЦА ДЛЯ МОБИЛКИ */
   .services__title {
@@ -1049,14 +988,15 @@ margin: 0 0 14px;
   letter-spacing: 0.12em !important;
 }
   
-
 .steps__image {
-  content: url("stepsmobil.png") !important;
+  content: url("img/stepsmobil.png") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
   width: 100% !important;
   height: auto !important;
-  object-fit: contain !important;
-}
-
+  display: block !important;
+  }
   
 .brief {
     padding: 40px 0 !important;
@@ -1387,82 +1327,4 @@ html, body {
   width: 100% !important;
   margin: 0 auto 28px !important;
 }
-
 }
-  /* 🔥 ФИНАЛЬНЫЙ ФИКС "О СЕБЕ" — ПЕРЕКРЫВАЕТ ВСЁ */
-.mobile-photo {
-  width: 100% !important;
-  max-width: 260px !important;
-  height: auto !important;
-  border-radius: 0 !important;
-  display: block !important;
-  margin: 0 auto !important;
-}
-
-.desktop-bg {
-  display: none !important;
-  width: 400px !important;
-  height: 400px !important;
-  object-fit: cover !important;
-  border-radius: 12px !important;
-}
-
-/* МОБИЛКА */
-@media screen and (max-width: 768px) {
-  .desktop-bg { display: none !important; }
-  .mobile-photo { display: block !important; }
-}
-
-/* ДЕСКТОП */
-@media screen and (min-width: 769px) {
-  .about__inner {
-    display: grid !important;
-    grid-template-columns: 400px 1fr !important;
-    gap: 48px !important;
-    padding: 32px 56px !important;
-  }
-  .about__photo-wrapper { grid-column: 1 !important; }
-  .about__content { grid-column: 2 !important; }
-  .desktop-bg { display: block !important; }
-  .mobile-photo { display: none !important; }
-}
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
