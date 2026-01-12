@@ -125,53 +125,9 @@ body {
 }
 
 
-/* ===== БЛОК «О СЕБЕ» — ОДИН ЧИСТЫЙ БЛОК ===== */
+/* ===== БЛОК «О СЕБЕ» ===== */
+/* тёмная полоса на всю ширину */
 .about {
-  padding: 70px 0 80px;
-  background-color: #4A4D50;
-  color: #dfddd7;
-}
-
-.about__photo {
-  width: 100%;
-  height: auto;
-  border-radius: 0;
-  object-fit: cover;
-  display: block;
-}
-
-.about__title {
-  font-size: 26px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #dfddd7;
-  margin: 0 0 24px;
-}
-
-.about__text {
-  margin: 0 0 16px;
-  line-height: 1.6;
-  font-size: 15px;
-  color: #dfddd7;
-}
-
-.about__skills-title {
-  margin-top: 10px;
-  margin-bottom: 6px;
-  font-weight: 600;
-}
-
-.about__list {
-  margin: 0 0 16px;
-  padding-left: 20px;
-  font-size: 15px;
-  line-height: 1.6;
-  color: #dfddd7;
-}
-
-/* ДЕСКТОП */
-@media (min-width: 769px) {
- .about {
   padding: 70px 0 80px;
   background-color: #4A4D50;
   background-image: url("img/about-photo.png");
@@ -179,8 +135,8 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-  
- .about__inner {  /* ← Grid */
+
+.about__inner {  /* ← Grid */
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 48px;
@@ -199,52 +155,91 @@ body {
   color: #dfddd7;
   max-width: 520px;
 }
-  .about__title { 
-    grid-column: 6 / 12; 
-    text-align: left;
-    margin: 20px 25px 15px;
-  }
-  .about__photo.desktop-bg { 
-    display: block; 
-  }
+
+.about__photo {
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  object-fit: cover;
+  display: block;
 }
 
-/* МОБИЛКА */
+/* линия + подпись под фото */
+.about__line-caption {
+  display: flex;
+  align-items: center;
+  gap: 16px;          /* расстояние между линией и текстом */
+  margin-top: 12px;   /* отступ от нижнего края фото */
+}
 
-@media (max-width: 768px) {
-  .about {
-    background: #4A4D50 !important;
-    padding: 120px 0 60px !important;
-  }
-  .about__inner {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    padding: 0 16px !important;
-    gap: 32px !important;
-    max-width: 1040px;
-    margin: 0 auto !important;
-  }
-  .about__title {
-    font-size: 22px !important;
-    text-align: center !important;
-    margin: 0 0 32px 0 !important;
-  }
+.about__line {
+  display: block;
+  height: 1px;
+  flex: 1;            /* линия тянется по ширине слева от подписи */
+  background-color: #dfddd7;
+}
+
+/* текст справа */
+.about__content {
+ grid-column: 6 / 12;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.about__title {
+  grid-column: 6 / 12;      /* заголовок справа, как текст */
+  font-size: 26px;
+  margin: 20 25 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #dfddd7;
+}
+
+.about__text {
+margin: 0 0 14px;
+  line-height: 1.6;
+  max-width: 520px;
+  color: #dfddd7;
+  font-size: 15px; 
+}
+
+.about__skills-title {
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.about__list {
+  margin: 0 0 16px;
+  padding-left: 20px;      /* отступ для маркеров */
+  color: #dfddd7;          /* тот же цвет, что и текст */
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.about__list-item {
+  margin-bottom: 4px;
+}
+
+.about__signature {
+  margin-top: 0px;      /* отступ сверху от основного текста */
+  font-size: 15px;
+  color: #dfddd7;
+  line-height: 1.6;
+}
+
+.about__signature-name {
+  font-size: 26px;      /* как .about__title «О себе» */
+  font-weight: 600;    
+}
+
+@media (min-width: 769px) {
   .about__photo-wrapper {
-    max-width: 260px !important;
-  }
-  .about__photo.mobile-photo {
-    display: block !important;
-    border-radius: 0 !important;
-  }
-  .about__photo.desktop-bg {
-    display: none !important;
-  }
-  .about__content {
-    max-width: 100% !important;
-    text-align: left !important;
+    display: none;
   }
 }
+
 
 /* ===== УСЛУГИ ===== */
 .services {
@@ -685,14 +680,9 @@ body {
 }
 
 
-
   /* ===== МОБИЛЬНАЯ ВЕРСИЯ (до 768px) ===== */
 @media (max-width: 768px) {
 
-  .about__photo.mobile-photo {
-  border-radius: 0 !important;
-  border-radius: 0px !important; /* двойной удар */
-}
   /* МОБИЛЬНЫЙ ФОН С !IMPORTANT */
   body {
     font-size: 14px !important;
@@ -701,11 +691,7 @@ body {
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
   }
-.about {
-  background-image: none !important;
-  background-color: #4A4D50 !important; /* явно белый фон */
-  padding-top: 120px !important;
-}
+
   /*  ШАПКА ФИКСИРУЕТСЯ */
   .header {
     position: fixed !important;  /* fixed вместо sticky */
@@ -831,72 +817,58 @@ body {
   }
 
   
-/* ===== БЛОК «О СЕБЕ» ДЕСКТОП ===== */
-
-
-
-.about__inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 32px 56px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 48px;
-}
-
-.about__photo-wrapper {
-  grid-column: 2 / 6;
-}
-
-.about__content {
-  grid-column: 6 / 12;
-  color: #dfddd7;
-  max-width: 520px;
-}
-
-.about__photo {
-  width: 100%;
-  height: auto;
-  border-radius: 0;
-  object-fit: cover;
-  display: block;
-}
-
-.about__title {
-  grid-column: 6 / 12;
-  font-size: 26px;
-  margin: 20px 25px 15px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #dfddd7;
-}
-
-.about__text {
-  margin: 0 0 14px;
-  line-height: 1.6;
-  max-width: 520px;
-  color: #dfddd7;
-  font-size: 15px;
-}
-
-/* остальные стили .about__list, .about__signature остаются */
-
-/* ДЕСКТОП ФОН */
-@media (min-width: 769px) {
+ /* О СЕБЕ — ТОЛЬКО МОБИЛКА */
   .about {
-    background-image: url("about-photo.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 500px;
+    padding-top: 50px !important;  /* отступ от главного экрана до заголовка */
+    padding-bottom: 60px !important;
+    background-color: #4A4D50;
+    background-image: none;
   }
-  .about__photo.desktop-bg {
-    display: none;
-  }
-}
-
-
   
+  .about__inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 16px !important;
+    
+  }
+
+  .about__title {
+    order: 1 !important;
+    text-align: center !important;
+    margin-bottom: 30px !important;  /* ← больший отступ */
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    color: #E6E5E1 !important;
+  }
+
+  .about__photo-wrapper {
+    order: 2 !important;
+    max-width: 260px !important;  /* БОЛЬШЕ ФОТО */
+    margin: 0 auto 32px auto !important;
+  }
+
+  .about__photo {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 0px !important;
+  }
+
+  .about__content {
+    order: 3 !important;
+    max-width: 100% !important;
+    text-align: left !important;
+  }
+
+  .about__text,
+  .about__skills-title,
+  .about__list,
+  .about__signature {
+    text-align: left !important;
+    margin-bottom: 16px !important;  /* отступы ТОЛЬКО на мобилке */
+  }
+
+
 /* УСЛУГИ — CSS ТАБЛИЦА ДЛЯ МОБИЛКИ */
   .services__title {
     text-align: center !important;
@@ -1356,14 +1328,3 @@ html, body {
   margin: 0 auto 28px !important;
 }
 }
-
-
-
-
-
-
-
-
-
-
-
