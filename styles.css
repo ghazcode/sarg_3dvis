@@ -231,33 +231,49 @@ margin: 0 0 14px;
 }
 
 @media screen and (min-width: 769px) {
-  .about__inner {
+ .about__inner {
     display: grid !important;
-    grid-template-columns: repeat(12, 1fr) !important;
+    grid-template-columns: 400px 1fr !important;
     gap: 48px !important;
     max-width: 1040px !important;
     margin: 0 auto !important;
     padding: 32px 56px !important;
+    flex-direction: row !important;  /* ← НЕ трогаем твой flex */
   }
   
+  /* ФОТО СЛЕВА 400px */
   .about__photo-wrapper { 
-    grid-column: 2 / 6 !important; 
+    order: 1 !important;
+    grid-column: 1 !important;
+    max-width: 400px !important;
   }
   
-  .about__content, .about__title { 
-    grid-column: 6 / 12 !important; 
+  /* ТЕКСТ СПРАВА */
+  .about__title { 
+    grid-column: 2 !important;
+    order: 1 !important;
+    text-align: left !important;
+    margin-bottom: 16px !important;
   }
   
+  .about__content { 
+    grid-column: 2 !important;
+    order: 2 !important;
+    text-align: left !important;
+  }
+  
+  /* about-photo.png ФОН */
   .about__photo {
     height: 400px !important;
     background-image: url("https://raw.githubusercontent.com/ghazcode/sarg_3dvis/main/about-photo.png") !important;
     background-size: cover !important;
     background-position: center !important;
-    border-radius: 0 !important;
+    border-radius: 12px !important;
   }
   
-  .about__photo img { 
-    display: none !important; 
+  /* СКРЫТЬ ripsik.jpg на десктопе */
+  .about__photo img {
+    display: none !important;
   }
 }
 
@@ -852,6 +868,7 @@ margin: 0 0 14px;
   padding: 0 16px !important;
    gap: 30px !important;
 }
+  
 
   .about__title {
     order: 1 !important;
@@ -1348,6 +1365,7 @@ html, body {
 }
 
 }
+
 
 
 
