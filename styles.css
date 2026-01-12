@@ -850,55 +850,85 @@ margin: 0 0 14px;
 
   
  /* О СЕБЕ  МОБИЛКА */
-.about {
-    padding-top: 50px !important;
-    padding-bottom: 60px !important;
-    background-color: #4A4D50;
-  }
-  
- .about__inner {
+
+  .about {
+  padding-top: 50px !important;
+  padding-bottom: 60px !important;
+  background-color: #4A4D50;
+}
+
+.about__inner {
   align-items: center !important;
   flex-direction: column !important;
   display: flex !important;
   padding: 0 16px !important;
-   gap: 30px !important;
+  gap: 30px !important;
+  position: relative !important;
 }
-  
 
-  .about__title {
-    order: 1 !important;
-    text-align: center !important;
-    margin-bottom: 30px !important;  /* ← больший отступ */
-    font-size: 22px !important;
-    font-weight: 600 !important;
-    color: #E6E5E1 !important;
-  }
+.about__title {
+  order: 1 !important;
+  text-align: center !important;
+  margin-bottom: 30px !important;
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  color: #E6E5E1 !important;
+  z-index: 2 !important;
+}
 
-  .about__photo-wrapper {
-    order: 2 !important;
-    max-width: 260px !important;  /* БОЛЬШЕ ФОТО */
-    margin: 0 auto 32px auto !important;
-  }
+.about__photo-wrapper {
+  order: 2 !important;
+  max-width: 260px !important;
+  margin: 0 auto 32px auto !important;
+}
 
-    .about__photo {
+.about__photo {
   width: 100% !important;
   height: auto !important;
   border-radius: 0px !important;
 }
 
-  .about__content {
-    order: 3 !important;
-    max-width: 100% !important;
-    text-align: left !important;
-  }
+.about__content {
+  order: 3 !important;
+  max-width: 100% !important;
+  text-align: left !important;
+  z-index: 2 !important;
+}
 
-  .about__text,
-  .about__skills-title,
-  .about__list,
-  .about__signature {
-    text-align: left !important;
-    margin-bottom: 16px !important;  /* отступы ТОЛЬКО на мобилке */
+/* ДЕСКТОП: ФОН НА ВЕСЬ БЛОК */
+@media screen and (min-width: 769px) {
+  .about__inner {
+    position: relative !important;
+    min-height: 500px !important;
+    background-image: url("https://raw.githubusercontent.com/ghazcode/sarg_3dvis/main/about-photo.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    padding: 80px 56px !important;
+    max-width: 1040px !important;
+    margin: 0 auto !important;
+    border-radius: 20px !important;
   }
+  
+  /* ТЕКСТ СПРАВА НА ФОНА */
+  .about__content {
+    max-width: 500px !important;
+    background: rgba(74, 77, 80, 0.9) !important;
+    padding: 40px !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(10px) !important;
+  }
+  
+  .about__title {
+    text-align: left !important;
+    margin-bottom: 24px !important;
+    font-size: 28px !important;
+  }
+  
+  /* СКРЫТЬ фото на десктопе */
+  .about__photo-wrapper {
+    display: none !important;
+  }
+}
 
 
 /* УСЛУГИ — CSS ТАБЛИЦА ДЛЯ МОБИЛКИ */
@@ -1360,6 +1390,7 @@ html, body {
 }
 
 }
+
 
 
 
