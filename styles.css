@@ -177,6 +177,11 @@ body {
     background-position: center;
     min-height: 500px;
   }
+
+   /* ❌ СПРЯТАТЬ RIPSИК НА ДЕСКТОПЕ */
+  .about__photo.mobile-photo {
+    display: none !important;
+  }
   .about__inner {
     display: grid !important;
     grid-template-columns: repeat(12, 1fr);
@@ -1349,6 +1354,7 @@ html, body {
   margin: 0 auto 28px !important;
 }
 }
+
 
 
 
