@@ -244,7 +244,14 @@ margin: 0 0 14px;
     /* фон работает, поэтому img не нужны */
   }
   
-  .about__photo.mobile-photo,
+ .about__photo.mobile-photo {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 0 !important;     /* ПРЯМЫЕ УГЛЫ */
+  border-radius: 0px !important;   /* ДВОЙНОЙ !important */
+  display: block !important;
+  object-fit: cover !important;
+}
   .about__photo.desktop-bg {
     display: none; /* скрываем ВСЕ картинки */
   }
@@ -698,6 +705,10 @@ margin: 0 0 14px;
   /* ===== МОБИЛЬНАЯ ВЕРСИЯ (до 768px) ===== */
 @media (max-width: 768px) {
 
+  .about__photo.mobile-photo {
+  border-radius: 0 !important;
+  border-radius: 0px !important; /* двойной удар */
+}
   /* МОБИЛЬНЫЙ ФОН С !IMPORTANT */
   body {
     font-size: 14px !important;
@@ -868,6 +879,8 @@ margin: 0 0 14px;
 .about__photo.mobile-photo {
   width: 100% !important;
   height: auto !important;
+  border-radius: 0 !important;     /* ПРЯМЫЕ УГЛЫ */
+  border-radius: 0px !important;   /* ДВОЙНОЙ !important */
   display: block !important;
   object-fit: cover !important;
 }
@@ -1341,6 +1354,7 @@ html, body {
   margin: 0 auto 28px !important;
 }
 }
+
 
 
 
