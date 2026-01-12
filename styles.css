@@ -231,53 +231,24 @@ margin: 0 0 14px;
 }
 
 @media (min-width: 769px) {
- .about {
-    padding: 20px 25px 15px !important;
-  }
-  
-  .about__inner {
+ .about__inner {
     display: grid !important;
     grid-template-columns: repeat(12, 1fr) !important;
-    gap: 48px !important;
-    max-width: 1040px !important;
-    margin: 0 auto !important;
-    padding: 32px 56px !important;
   }
-  
   .about__photo-wrapper {
-    grid-column: 2 / 6 !important;
-    display: block !important;
-    order: unset !important;
-    margin-top: 20px !important;
+    grid-column: 2 / 6 !important; /* СЛЕВА */
   }
-  
   .about__content {
-    grid-column: 6 / 12 !important;
-    order: unset !important;
-    text-align: left !important;
+    grid-column: 6 / 12 !important; /* СПРАВА */
   }
-  
-  .about__title {
-    grid-column: 6 / 12 !important;
-    margin: 20px 25px 15px !important;
-    font-size: 26px !important;
-  }
-  
-  .about__photo {
-    width: 100% !important;
-    height: 400px !important;
-    background-image: url("about-photo.png") !important; /* ← ИЗ КОРНЯ */
-    background-size: cover !important;
-    background-position: center !important;
-    object-fit: cover !important;
-  }
-
-  .about__inner { display: grid !important; }
-  .about__photo-wrapper { grid-column: 2 / 6 !important; }
-  .about__content { grid-column: 6 / 12 !important; }
   .about__photo {
     background-image: url("about-photo.png") !important;
+    background-size: cover !important;
     height: 400px !important;
+    width: 100% !important;
+  }
+  .about__title {
+    grid-column: 6 / 12 !important;
   }
 }
 
@@ -1372,6 +1343,7 @@ html, body {
 }
 
 }
+
 
 
 
