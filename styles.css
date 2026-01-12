@@ -847,53 +847,132 @@ margin: 0 0 14px;
   }
 
   
-/* О СЕБЕ — МОБИЛЬНАЯ ВЕРСИЯ */
+/* ===== БЛОК «О СЕБЕ» ДЕСКТОП ===== */
 .about {
-  background: #4A4D50 !important;
-  background-image: none !important;
-  padding: 120px 0 60px !important;
+  padding: 70px 0 80px;
+  background-color: #4A4D50;
+  color: #dfddd7;
+  position: relative;
 }
 
 .about__inner {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  padding: 0 16px !important;
-  gap: 32px !important;
-}
-
-/* ✅ ПРАВИЛЬНЫЙ ПОРЯДОК */
-.about__title {
-  order: -1 !important;  /* ПЕРВЫЙ (отрицательное число побеждает) */
-  text-align: center !important;
-  font-size: 22px !important;
-  margin: 0 0 40px 0 !important; /* отступ до фото */
-  color: #dfddd7 !important;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 32px 56px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 48px;
 }
 
 .about__photo-wrapper {
-  order: 0 !important;   /* ВТОРОЙ */
-  max-width: 260px !important;
-  margin: 0 auto 24px !important;
-}
-
-.about__photo.mobile-photo {
-  width: 100% !important;
-  height: auto !important;
-  border-radius: 0 !important;  /* ПРЯМЫЕ УГЛЫ */
-  display: block !important;
-  object-fit: cover !important;
-}
-
-.about__photo.desktop-bg {
-  display: none !important;
+  grid-column: 2 / 6;
 }
 
 .about__content {
-  order: 1 !important;   /* ТРЕТИЙ */
-  max-width: 100% !important;
-  text-align: left !important;
+  grid-column: 6 / 12;
+  color: #dfddd7;
+  max-width: 520px;
 }
+
+.about__photo {
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  object-fit: cover;
+  display: block;
+}
+
+.about__title {
+  grid-column: 6 / 12;
+  font-size: 26px;
+  margin: 20px 25px 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #dfddd7;
+}
+
+.about__text {
+  margin: 0 0 14px;
+  line-height: 1.6;
+  max-width: 520px;
+  color: #dfddd7;
+  font-size: 15px;
+}
+
+/* остальные стили .about__list, .about__signature остаются */
+
+/* ДЕСКТОП ФОН */
+@media (min-width: 769px) {
+  .about {
+    background-image: url("about-photo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 500px;
+  }
+  .about__photo.desktop-bg {
+    display: none;
+  }
+}
+
+/* ===== МОБИЛКА (≤768px) ===== */
+@media (max-width: 768px) {
+  .about {
+    background: #4A4D50 !important;
+    background-image: none !important;
+    padding: 120px 0 60px !important;
+  }
+
+  .about__inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 16px !important;
+    gap: 32px !important;
+  }
+
+  /* 1️⃣ ЗАГОЛОВОК ПЕРВЫМ */
+  .about__title {
+    order: -2 !important;
+    text-align: center !important;
+    font-size: 22px !important;
+    margin: 0 0 40px 0 !important;
+    color: #dfddd7 !important;
+    grid-column: auto !important;
+  }
+
+  /* 2️⃣ ФОТО ВТОРЫМ */
+  .about__photo-wrapper {
+    order: -1 !important;
+    max-width: 260px !important;
+    margin: 0 auto 32px !important;
+  }
+
+  .about__photo.mobile-photo {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+  .about__photo.desktop-bg {
+    display: none !important;
+  }
+
+  /* 3️⃣ ТЕКСТ ТРЕТЬИМ */
+  .about__content {
+    order: 0 !important;
+    max-width: 100% !important;
+    text-align: left !important;
+    grid-column: auto !important;
+  }
+
+  .about__text, .about__list {
+    width: 100% !important;
+  }
+}
+
   
 /* УСЛУГИ — CSS ТАБЛИЦА ДЛЯ МОБИЛКИ */
   .services__title {
@@ -1354,6 +1433,7 @@ html, body {
   margin: 0 auto 28px !important;
 }
 }
+
 
 
 
