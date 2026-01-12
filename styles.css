@@ -832,13 +832,12 @@ margin: 0 0 14px;
     padding-top: 50px !important;
     padding-bottom: 60px !important;
     background-color: #4A4D50;
- 
-
   }
   
  .about__inner {
   align-items: center !important;
-   display: flex !important;
+  flex-direction: column !important;
+  display: flex !important;
   padding: 0 16px !important;
 }
 
@@ -1339,6 +1338,7 @@ html, body {
 }
 
 }
+
 
 
 
