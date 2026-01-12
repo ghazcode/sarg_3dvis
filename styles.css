@@ -917,7 +917,7 @@ margin: 0 0 14px;
 
 /* ===== МОБИЛКА (≤768px) ===== */
 @media (max-width: 768px) {
-  .about {
+ .about {
     background: #4A4D50 !important;
     background-image: none !important;
     padding: 120px 0 60px !important;
@@ -931,19 +931,16 @@ margin: 0 0 14px;
     gap: 32px !important;
   }
 
-  /* 1️⃣ ЗАГОЛОВОК ПЕРВЫМ */
+  /* 1️⃣ ЗАГОЛОВОК ПЕРВЫМ (HTML порядок!) */
   .about__title {
-    order: -2 !important;
     text-align: center !important;
     font-size: 22px !important;
     margin: 0 0 40px 0 !important;
     color: #dfddd7 !important;
-    grid-column: auto !important;
   }
 
-  /* 2️⃣ ФОТО ВТОРЫМ */
+  /* 2️⃣ ФОТО ВТОРЫМ (HTML порядок!) */
   .about__photo-wrapper {
-    order: -1 !important;
     max-width: 260px !important;
     margin: 0 auto 32px !important;
   }
@@ -960,19 +957,16 @@ margin: 0 0 14px;
     display: none !important;
   }
 
-  /* 3️⃣ ТЕКСТ ТРЕТЬИМ */
+  /* 3️⃣ ТЕКСТ ТРЕТЬИМ (HTML порядок!) */
   .about__content {
-    order: 0 !important;
     max-width: 100% !important;
     text-align: left !important;
-    grid-column: auto !important;
   }
 
   .about__text, .about__list {
     width: 100% !important;
   }
 }
-
   
 /* УСЛУГИ — CSS ТАБЛИЦА ДЛЯ МОБИЛКИ */
   .services__title {
@@ -1433,6 +1427,7 @@ html, body {
   margin: 0 auto 28px !important;
 }
 }
+
 
 
 
