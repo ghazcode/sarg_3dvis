@@ -232,7 +232,7 @@ margin: 0 0 14px;
 
 @media (min-width: 769px) {
  .about {
-    padding: 70px 0 80px !important;
+    padding: 20px 25px 15px !important;
   }
   
   .about__inner {
@@ -270,6 +270,14 @@ margin: 0 0 14px;
     background-size: cover !important;
     background-position: center !important;
     object-fit: cover !important;
+  }
+
+  .about__inner { display: grid !important; }
+  .about__photo-wrapper { grid-column: 2 / 6 !important; }
+  .about__content { grid-column: 6 / 12 !important; }
+  .about__photo {
+    background-image: url("about-photo.png") !important;
+    height: 400px !important;
   }
 }
 
@@ -1364,6 +1372,7 @@ html, body {
 }
 
 }
+
 
 
 
