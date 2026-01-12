@@ -231,36 +231,27 @@ margin: 0 0 14px;
 }
 
 @media screen and (min-width: 769px) {
-  .about {
-    padding: 70px 0 80px !important;
-  }
   .about__inner {
     display: grid !important;
     grid-template-columns: repeat(12, 1fr) !important;
     gap: 48px !important;
-    padding: 32px 56px !important;
     max-width: 1040px !important;
     margin: 0 auto !important;
+    padding: 32px 56px !important;
   }
-  .about__photo-wrapper {
-    grid-column: 2 / 6 !important;
-  }
-  .about__content, .about__title {
-    grid-column: 6 / 12 !important;
-  }
+  .about__photo-wrapper { grid-column: 2 / 6 !important; }
+  .about__content, .about__title { grid-column: 6 / 12 !important; }
+  
   .about__photo {
-    position: relative !important;
-    width: 100% !important;
     height: 400px !important;
-    background-image: url("about-photo.png") !important;
+    background: linear-gradient(45deg, #ff6b35, #4A4D50) !important;
     background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
+    border-radius: 0 !important;
   }
-  .about__photo img {
-    display: none !important;  /* ← СКРЫВАЕТ ripsik.jpg */
-  }
+  .about__photo img { display: none !important; }
 }
+
+
 /* ===== УСЛУГИ ===== */
 .services {
   padding: 80px 0;
@@ -1346,6 +1337,7 @@ html, body {
 }
 
 }
+
 
 
 
