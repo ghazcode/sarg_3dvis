@@ -240,28 +240,20 @@ margin: 0 0 14px;
     padding: 32px 56px !important;
   }
   
-  .about__photo-wrapper {
-    grid-column: 2 / 6 !important; /* ЛЕВАЯ часть */
-  }
+  .about__photo-wrapper { grid-column: 2 / 6 !important; }
+  .about__content, .about__title { grid-column: 6 / 12 !important; }
   
-  .about__content, .about__title {
-    grid-column: 6 / 12 !important; /* ПРАВАЯ часть */
-  }
-  
-  /* 🔥 ФОН PNG, ripsik.jpg СКРЫТА */
   .about__photo {
-    width: 100% !important;
     height: 400px !important;
-    background-image: url("about-photo.png") !important;
+    background-image: url("https://raw.githubusercontent.com/ghazcode/sarg_3dvis/main/about-photo.png") !important;
     background-size: cover !important;
     background-position: center !important;
-    background-repeat: no-repeat !important;
+    border-radius: 0 !important;
   }
   
-  .about__photo img {
-    display: none !important; /* ← ripsik.jpg ПРОПАДАЕТ */
-  }
+  .about__photo img { display: none !important; }
 }
+
 
 /* ===== УСЛУГИ ===== */
 .services {
@@ -1349,6 +1341,7 @@ html, body {
 }
 
 }
+
 
 
 
