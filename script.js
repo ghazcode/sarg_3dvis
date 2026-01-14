@@ -87,33 +87,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(index + 1));
     goToSlide(0);
   });
-// 🔥 ПРЕМИУМ СКОЛЬЗЯЩИЙ СКРОЛЛ
-let velocity = 0;
-let rafId = null;
-
-function smoothScroll() {
-  window.scrollBy(0, velocity);
-  velocity *= 0.92; // затухание = СКОЛЬЖЕНИЕ
-  
-  if (Math.abs(velocity) > 0.5) {
-    rafId = requestAnimationFrame(smoothScroll);
-  } else {
-    cancelAnimationFrame(rafId);
-  }
-}
-
+// 🔥 ПЛАВНЫЙ CSS СКРОЛЛ
 window.addEventListener('wheel', (e) => {
   e.preventDefault();
-  if (rafId) cancelAnimationFrame(rafId);
-  
-  velocity = e.deltaY * 0.8; // начальная скорость
-  requestAnimationFrame(smoothScroll);
+  const delta = e.deltaY * 3; // быстрая скорость
+  window.scrollBy(0, delta);
 }, { passive: false });
 
 }); // ← ВСЁ ВНУТРИ!
-
-
-
-
 
 
