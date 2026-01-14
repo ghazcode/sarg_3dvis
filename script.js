@@ -88,35 +88,26 @@ document.addEventListener('DOMContentLoaded', function() {
     goToSlide(0);
   });
 
-  // 🔥 ПЛАВНЫЙ СКРОЛЛ — ВНУТРИ DOMContentLoaded
-  let targetScroll = window.scrollY;
-  let rafId = null;
-  let lastWheelTime = 0;
+// 🔥 ПЛАВНЫЙ СКРОЛЛ — ПРОСТОЙ И НАДЁЖНЫЙ
+let scrollTimeout = null;
 
-  function scrollToTarget() {
-    const scrollY = window.scrollY;
-    const distance = targetScroll - scrollY;
-    
-    if (Math.abs(distance) > 1) {
-      window.scrollTo(0, scrollY + distance * 0.12);
-      rafId = requestAnimationFrame(scrollToTarget);
-    } else {
-      rafId = null;
-    }
+window.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  
+  // Очищаем предыдущий таймер
+  if (scrollTimeout) {
+    clearTimeout(scrollTimeout);
   }
-
-  window.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    const now = Date.now();
-    
-    if (now - lastWheelTime > 80) {
-      if (rafId) {
-        cancelAnimationFrame(rafId);  // ← УБИРАЕТ САМОСКРОЛЛ!
-      }
-      
-      targetScroll += e.deltaY * 1.2;
-      lastWheelTime = now;
-      rafId = requestAnimationFrame(scrollToTarget);
-    }
-  }, { passive: false });
+  
+  // Немедленный скролл + плавная анимация
+  const delta = e.deltaY * 1.5;
+  window.scrollBy({
+    top: delta,
+    behavior: 'smooth'
+  });
+  
+  // Блокируем повторный скролл на 300мс
+  scrollTimeout = setTimeout(() => {}, 300);
+}, { passive: false });
 }); // ← ВСЁ ВНУТРИ!
+
