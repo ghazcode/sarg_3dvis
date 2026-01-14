@@ -7,18 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
       burger.classList.toggle('active');
       nav.classList.toggle('active');
     });
+    
+    // Закрытие по клику на ссылку
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('active');
+        nav.classList.remove('active');
+      });
+    });
   }
 
-    
-    // Закрываем бургер
-    if (burger && nav) {
-      burger.classList.remove('active');
-      nav.classList.remove('active');
-    }
-  });
-});
-  
-  // 2. ТОЛЬКО МОДАЛКА (без слайдеров!)
+  // 2. МОДАЛКА
   document.querySelectorAll('.portfolio__image, .portfolio__image--full').forEach(img => {
     img.style.cursor = 'pointer';
     img.addEventListener('click', function(e) {
@@ -68,27 +67,26 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   });
-});
 
-// 🔥 ДЕСКТОП СТРЕЛКИ
-document.querySelectorAll('[data-slider]').forEach(slider => {
-  const track = slider.querySelector('.portfolio__slides');
-  const slides = slider.querySelectorAll('.portfolio__slide');
-  const prevBtn = slider.querySelector('.portfolio__arrow--prev');
-  const nextBtn = slider.querySelector('.portfolio__arrow--next');
-  
-  let index = 0;
-  
-  function goToSlide(newIndex) {
-  index = Math.max(0, Math.min(slides.length - 1, newIndex));
-  const offset = -index * 100;
-  track.style.transition = 'none';  // ← МОМЕНТАЛЬНО!
-  track.style.transform = `translateX(${offset}%)`;
-}
-  
-  if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(index - 1));
-  if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(index + 1));
-  
-  goToSlide(0);
+  // 3. ДЕСКТОП СТРЕЛКИ СЛАЙДЕРОВ
+  document.querySelectorAll('[data-slider]').forEach(slider => {
+    const track = slider.querySelector('.portfolio__slides');
+    const slides = slider.querySelectorAll('.portfolio__slide');
+    const prevBtn = slider.querySelector('.portfolio__arrow--prev');
+    const nextBtn = slider.querySelector('.portfolio__arrow--next');
+    
+    let index = 0;
+    
+    function goToSlide(newIndex) {
+      index = Math.max(0, Math.min(slides.length - 1, newIndex));
+      const offset = -index * 100;
+      track.style.transition = 'none';  // МОМЕНТАЛЬНО!
+      track.style.transform = `translateX(${offset}%)`;
+    }
+    
+    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(index - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(index + 1));
+    
+    goToSlide(0);
+  });
 });
-
