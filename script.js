@@ -87,8 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(index + 1));
     goToSlide(0);
   });
-
-// 🔥 ПЛАВНЫЙ СКРОЛЛ — ПРОСТОЙ И НАДЁЖНЫЙ
+  // 🔥 ПЛАВНЫЙ СКРОЛЛ — ПРОСТОЙ И НАДЁЖНЫЙ
 let scrollTimeout = null;
 
 window.addEventListener('wheel', (e) => {
@@ -109,5 +108,7 @@ window.addEventListener('wheel', (e) => {
   // Блокируем повторный скролл на 300мс
   scrollTimeout = setTimeout(() => {}, 300);
 }, { passive: false });
+
 }); // ← ВСЁ ВНУТРИ!
+
 
