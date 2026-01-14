@@ -89,26 +89,15 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   // 🔥 ПЛАВНЫЙ СКРОЛЛ — ПРОСТОЙ И НАДЁЖНЫЙ
 let scrollTimeout = null;
-
 window.addEventListener('wheel', (e) => {
   e.preventDefault();
-  
-  // Очищаем предыдущий таймер
-  if (scrollTimeout) {
-    clearTimeout(scrollTimeout);
-  }
-  
-  // Немедленный скролл + плавная анимация
-  const delta = e.deltaY * 1.5;
   window.scrollBy({
-    top: delta,
+    top: e.deltaY * 2,
     behavior: 'smooth'
   });
-  
-  // Блокируем повторный скролл на 300мс
-  scrollTimeout = setTimeout(() => {}, 300);
 }, { passive: false });
 
 }); // ← ВСЁ ВНУТРИ!
+
 
 
