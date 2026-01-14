@@ -89,29 +89,30 @@ document.addEventListener('DOMContentLoaded', function() {
     goToSlide(0);
   });
 
-// 🔥 ПЛАВНЫЙ СКРОЛЛ — МЕДЛЕННЫЙ И ПЛАВНЫЙ
+// 🔥 ПЛАВНЫЙ СКРОЛЛ (замени СТАРЫЙ блок на ЭТОТ)
 let targetScroll = window.scrollY;
 let isScrolling = false;
-let lastWheelTime = 0;
 
 function scrollToTarget() {
   const scrollY = window.scrollY;
   const distance = targetScroll - scrollY;
   
   if (Math.abs(distance) > 1) {
-    window.scrollTo(0, scrollY + distance * 0.1);  // 0.1 = очень плавно
+    window.scrollTo(0, scrollY + distance * 0.12);
     requestAnimationFrame(scrollToTarget);
   } else {
     isScrolling = false;
   }
 }
 
+// ДЕСКТОП: колесо (каждые 100мс)
+let lastWheelTime = 0;
 window.addEventListener('wheel', (e) => {
   e.preventDefault();
   const now = Date.now();
   
-  if (now - lastWheelTime > 120) {  // каждые 120мс
-    targetScroll += e.deltaY * 0.5;  // 0.5 = МЕДЛЕННО
+  if (now - lastWheelTime > 100) {  // раз в 100мс
+    targetScroll += e.deltaY * 1.2;
     lastWheelTime = now;
     
     if (!isScrolling) {
@@ -120,3 +121,8 @@ window.addEventListener('wheel', (e) => {
     }
   }
 }, { passive: false });
+
+// МОБИЛКА: touch (разрешаем стандартный скролл)
+document.addEventListener('touchmove', function(e) {
+  // Мобильный скролл использует CSS smooth (твой уже работает)
+}, { passive: true });
