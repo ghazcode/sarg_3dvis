@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
       nav.classList.toggle('active');
     });
     
-    // Закрытие по клику на ссылку
     nav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         burger.classList.remove('active');
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 2. ТОЛЬКО МОДАЛКА
+  // 2. МОДАЛКА
   document.querySelectorAll('.portfolio__image, .portfolio__image--full').forEach(img => {
     img.style.cursor = 'pointer';
     img.addEventListener('click', function(e) {
@@ -68,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // 3. ДЕСКТОП СТРЕЛКИ СЛАЙДЕРОВ
+  // 3. СЛАЙДЕРЫ
   document.querySelectorAll('[data-slider]').forEach(slider => {
     const track = slider.querySelector('.portfolio__slides');
     const slides = slider.querySelectorAll('.portfolio__slide');
@@ -89,40 +88,35 @@ document.addEventListener('DOMContentLoaded', function() {
     goToSlide(0);
   });
 
-// 🔥 ПЛАВНЫЙ СКРОЛЛ (замени СТАРЫЙ блок на ЭТОТ)
-let targetScroll = window.scrollY;
-let isScrolling = false;
+  // 🔥 ПЛАВНЫЙ СКРОЛЛ — ВНУТРИ DOMContentLoaded
+  let targetScroll = window.scrollY;
+  let isScrolling = false;
+  let lastWheelTime = 0;
 
-function scrollToTarget() {
-  const scrollY = window.scrollY;
-  const distance = targetScroll - scrollY;
-  
-  if (Math.abs(distance) > 1) {
-    window.scrollTo(0, scrollY + distance * 0.12);
-    requestAnimationFrame(scrollToTarget);
-  } else {
-    isScrolling = false;
-  }
-}
-
-// ДЕСКТОП: колесо (каждые 100мс)
-let lastWheelTime = 0;
-window.addEventListener('wheel', (e) => {
-  e.preventDefault();
-  const now = Date.now();
-  
-  if (now - lastWheelTime > 100) {  // раз в 100мс
-    targetScroll += e.deltaY * 1.2;
-    lastWheelTime = now;
+  function scrollToTarget() {
+    const scrollY = window.scrollY;
+    const distance = targetScroll - scrollY;
     
-    if (!isScrolling) {
-      isScrolling = true;
+    if (Math.abs(distance) > 1) {
+      window.scrollTo(0, scrollY + distance * 0.08);  // Очень плавно
       requestAnimationFrame(scrollToTarget);
+    } else {
+      isScrolling = false;
     }
   }
-}, { passive: false });
 
-// МОБИЛКА: touch (разрешаем стандартный скролл)
-document.addEventListener('touchmove', function(e) {
-  // Мобильный скролл использует CSS smooth (твой уже работает)
-}, { passive: true });
+  window.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const now = Date.now();
+    
+    if (now - lastWheelTime > 120) {
+      targetScroll += e.deltaY * 0.45;  // Медленно
+      lastWheelTime = now;
+      
+      if (!isScrolling) {
+        isScrolling = true;
+        requestAnimationFrame(scrollToTarget);
+      }
+    }
+  }, { passive: false });
+});
