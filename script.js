@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 🔥 ПЛАВНЫЙ СКРОЛЛ — ВНУТРИ DOMContentLoaded
   let targetScroll = window.scrollY;
-  let isScrolling = false;
+  let rafId = null;
   let lastWheelTime = 0;
 
   function scrollToTarget() {
@@ -98,10 +98,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const distance = targetScroll - scrollY;
     
     if (Math.abs(distance) > 1) {
-      window.scrollTo(0, scrollY + distance * 0.12);  //  плавно
-      requestAnimationFrame(scrollToTarget);
+      window.scrollTo(0, scrollY + distance * 0.12);
+      rafId = requestAnimationFrame(scrollToTarget);
     } else {
-      isScrolling = false;
+      rafId = null;
     }
   }
 
@@ -110,15 +110,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const now = Date.now();
     
     if (now - lastWheelTime > 80) {
-      targetScroll += e.deltaY * 1,2;  // Медленно
-      lastWheelTime = now;
-      
-      if (!isScrolling) {
-        isScrolling = true;
-        requestAnimationFrame(scrollToTarget);
+      if (rafId) {
+        cancelAnimationFrame(rafId);  // ← УБИРАЕТ САМОСКРОЛЛ!
       }
+      
+      targetScroll += e.deltaY * 1.2;
+      lastWheelTime = now;
+      rafId = requestAnimationFrame(scrollToTarget);
     }
   }, { passive: false });
-});
-
-
+}); // ← ВСЁ ВНУТРИ!
