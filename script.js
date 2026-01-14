@@ -8,16 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
       nav.classList.toggle('active');
     });
     
-    // Закрытие по клику на ссылку
-    nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        burger.classList.remove('active');
-        nav.classList.remove('active');
-      });
-    });
+    // Закрываем бургер
+    if (burger && nav) {
+      burger.classList.remove('active');
+      nav.classList.remove('active');
+    }
   }
 
-  // 2. МОДАЛКА
+  // 2. ТОЛЬКО МОДАЛКА (без слайдеров!)
   document.querySelectorAll('.portfolio__image, .portfolio__image--full').forEach(img => {
     img.style.cursor = 'pointer';
     img.addEventListener('click', function(e) {
@@ -68,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // 3. ДЕСКТОП СТРЕЛКИ СЛАЙДЕРОВ
+  // 🔥 ДЕСКТОП СТРЕЛКИ
   document.querySelectorAll('[data-slider]').forEach(slider => {
     const track = slider.querySelector('.portfolio__slides');
     const slides = slider.querySelectorAll('.portfolio__slide');
@@ -80,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function goToSlide(newIndex) {
       index = Math.max(0, Math.min(slides.length - 1, newIndex));
       const offset = -index * 100;
-      track.style.transition = 'none';  // МОМЕНТАЛЬНО!
+      track.style.transition = 'none'; // ← МОМЕНТАЛЬНО!
       track.style.transform = `translateX(${offset}%)`;
     }
     
@@ -89,4 +87,57 @@ document.addEventListener('DOMContentLoaded', function() {
     
     goToSlide(0);
   });
-});
+
+  // 🔥🔥 ГЛОБАЛЬНЫЙ ПЛАВНЫЙ СКРОЛЛ (колесо + touch) — НОВОЕ!
+  let isScrolling = false;
+  
+  function smoothScrollTo(y, duration = 800) {
+    const startY = window.scrollY;
+    const distance = y - startY;
+    const startTime = performance.now();
+    
+    function step(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeProgress = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+      
+      window.scrollTo(0, startY + distance * easeProgress);
+      
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  
+  // Колесо мыши
+  window.addEventListener('wheel', (e) => {
+    if (isScrolling) return;
+    isScrolling = true;
+    
+    smoothScrollTo(window.scrollY + e.deltaY * 2, 600);
+    
+    setTimeout(() => {
+      isScrolling = false;
+    }, 600);
+  }, { passive: false });
+  
+  // Touch (мобилка)
+  let touchStartY = 0;
+  window.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+  });
+  
+  window.addEventListener('touchmove', (e) => {
+    if (isScrolling) return;
+    const touchY = e.touches[0].clientY;
+    const deltaY = touchStartY - touchY;
+    
+    smoothScrollTo(window.scrollY + deltaY * 2, 600);
+    
+    touchStartY = touchY;
+    isScrolling = true;
+    
+    setTimeout(() => { isScrolling = false; }, 600);
+  }, { passive: false });
+}); // ← ЕДИНСТВЕННАЯ закрывающая скобка
