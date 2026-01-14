@@ -92,12 +92,13 @@ let scrollTimeout = null;
 window.addEventListener('wheel', (e) => {
   e.preventDefault();
   window.scrollBy({
-    top: e.deltaY * 1.8,
+    top: e.deltaY * 3.5,
     behavior: 'smooth'
   });
 }, { passive: false });
 
 }); // ← ВСЁ ВНУТРИ!
+
 
 
 
