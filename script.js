@@ -87,14 +87,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(index + 1));
     goToSlide(0);
   });
-// 🔥 ПЛАВНЫЙ CSS СКРОЛЛ
-window.addEventListener('wheel', (e) => {
-  e.preventDefault();
-  const delta = e.deltaY * 2.5; //скорость
-  window.scrollBy(0, delta);
-}, { passive: false });
 
 }); // ← ВСЁ ВНУТРИ!
+
 
 
 
