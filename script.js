@@ -87,17 +87,31 @@ document.addEventListener('DOMContentLoaded', function() {
     if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(index + 1));
     goToSlide(0);
   });
-  // 🔥 ПЛАВНЫЙ СКРОЛЛ — ПРОСТОЙ И НАДЁЖНЫЙ
-let scrollTimeout = null;
+// 🔥 ПРЕМИУМ СКОЛЬЗЯЩИЙ СКРОЛЛ
+let velocity = 0;
+let rafId = null;
+
+function smoothScroll() {
+  window.scrollBy(0, velocity);
+  velocity *= 0.92; // затухание = СКОЛЬЖЕНИЕ
+  
+  if (Math.abs(velocity) > 0.5) {
+    rafId = requestAnimationFrame(smoothScroll);
+  } else {
+    cancelAnimationFrame(rafId);
+  }
+}
+
 window.addEventListener('wheel', (e) => {
   e.preventDefault();
-  window.scrollBy({
-    top: e.deltaY * 3.5,
-    behavior: 'smooth'
-  });
+  if (rafId) cancelAnimationFrame(rafId);
+  
+  velocity = e.deltaY * 0.8; // начальная скорость
+  requestAnimationFrame(smoothScroll);
 }, { passive: false });
 
 }); // ← ВСЁ ВНУТРИ!
+
 
 
 
