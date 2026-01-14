@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const now = Date.now();
     
     if (now - lastWheelTime > 120) {
-      targetScroll += e.deltaY * 0.45;  // Медленно
+      targetScroll += e.deltaY * 1;  // Медленно
       lastWheelTime = now;
       
       if (!isScrolling) {
@@ -120,3 +120,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, { passive: false });
 });
+
