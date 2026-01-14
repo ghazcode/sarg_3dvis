@@ -1,8 +1,10 @@
 /* ===== ОБЩИЕ НАСТРОЙКИ ===== */
 
 html {
-  scroll-behavior: smooth;\
-  -webkit-scroll-behavior: smooth; /* для iOS Safari */
+  scroll-behavior: smooth !important;
+  -webkit-scroll-behavior: smooth !important;
+  -moz-scroll-behavior: smooth !important;
+  scroll-padding-top: 70px !important; /* учет fixed header */
 }
 
 body {
@@ -1337,4 +1339,5 @@ html, body {
   margin: 0 auto 28px !important;
 }
 }
+
 
