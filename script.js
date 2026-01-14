@@ -89,38 +89,41 @@ document.addEventListener('DOMContentLoaded', function() {
     goToSlide(0);
   });
 
-  // 🔥 ГЛОБАЛЬНЫЙ ПЛАВНЫЙ СКРОЛЛ (колесо + touch)
-  let isScrolling = false;
+// 🔥 ПЛАВНЫЙ СКРОЛЛ (замени СТАРЫЙ блок на ЭТОТ)
+let targetScroll = window.scrollY;
+let isScrolling = false;
+
+function scrollToTarget() {
+  const scrollY = window.scrollY;
+  const distance = targetScroll - scrollY;
   
-  function smoothWheelScroll(delta) {
-    if (isScrolling) return;
-    isScrolling = true;
-    
-    window.scrollBy({
-      top: delta * 40,
-      behavior: 'smooth'
-    });
-    
-    setTimeout(() => { isScrolling = false; }, 500);
+  if (Math.abs(distance) > 1) {
+    window.scrollTo(0, scrollY + distance * 0.12);
+    requestAnimationFrame(scrollToTarget);
+  } else {
+    isScrolling = false;
   }
+}
 
-  // ДЕСКТОП: колесо
-  window.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    smoothWheelScroll(e.deltaY);
-  }, { passive: false });
+// ДЕСКТОП: колесо (каждые 100мс)
+let lastWheelTime = 0;
+window.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const now = Date.now();
+  
+  if (now - lastWheelTime > 100) {  // раз в 100мс
+    targetScroll += e.deltaY * 1.2;
+    lastWheelTime = now;
+    
+    if (!isScrolling) {
+      isScrolling = true;
+      requestAnimationFrame(scrollToTarget);
+    }
+  }
+}, { passive: false });
 
-  // МОБИЛКА: touch
-  let startY = 0;
-  document.addEventListener('touchstart', (e) => {
-    startY = e.touches[0].clientY;
-  }, { passive: true });
+// МОБИЛКА: touch (разрешаем стандартный скролл)
+document.addEventListener('touchmove', function(e) {
+  // Мобильный скролл использует CSS smooth (твой уже работает)
+}, { passive: true });
 
-  document.addEventListener('touchmove', (e) => {
-    if (isScrolling) return;
-    const currentY = e.touches[0].clientY;
-    const delta = startY - currentY;
-    smoothWheelScroll(delta);
-    startY = currentY;
-  }, { passive: false });
-});
