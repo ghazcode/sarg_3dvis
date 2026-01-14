@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const distance = targetScroll - scrollY;
     
     if (Math.abs(distance) > 1) {
-      window.scrollTo(0, scrollY + distance * 0.08);  // Очень плавно
+      window.scrollTo(0, scrollY + distance * 0.12);  //  плавно
       requestAnimationFrame(scrollToTarget);
     } else {
       isScrolling = false;
@@ -109,8 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
     const now = Date.now();
     
-    if (now - lastWheelTime > 120) {
-      targetScroll += e.deltaY * 1;  // Медленно
+    if (now - lastWheelTime > 80) {
+      targetScroll += e.deltaY * 1,2;  // Медленно
       lastWheelTime = now;
       
       if (!isScrolling) {
@@ -120,4 +120,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, { passive: false });
 });
+
 
