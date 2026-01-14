@@ -1,4 +1,10 @@
 /* ===== ОБЩИЕ НАСТРОЙКИ ===== */
+
+html {
+  scroll-behavior: smooth;\
+  -webkit-scroll-behavior: smooth; /* для iOS Safari */
+}
+
 body {
   margin: 0;
   background-color: #dfddd7; /* основной светлый цвет сайта */
@@ -1331,3 +1337,4 @@ html, body {
   margin: 0 auto 28px !important;
 }
 }
+
