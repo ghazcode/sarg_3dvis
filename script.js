@@ -1,48 +1,107 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Бургер
-  document.querySelector('.burger')?.addEventListener('click', function() {
-    document.querySelector('.burger').classList.toggle('active');
-    document.querySelector('.header__nav').classList.toggle('active');
-  });
+  // 1. БУРГЕР
+  const burger = document.querySelector('.burger');
+  const nav = document.querySelector('.header__nav');
+  
+  if (burger && nav) {
+    burger.addEventListener('click', function() {
+      burger.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+  }
 
-  // ПЛАВНЫЙ СКРОЛЛ
+  // 2. ПЛАВНЫЙ СКРОЛЛ ПО МЕНЮ
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
+      const href = this.getAttribute('href');
+      const target = document.querySelector(href);
+      
+      if (target && href !== '#') {
+        const offset = target.offsetTop - 90;
         window.scrollTo({
-          top: target.offsetTop - 90,
+          top: offset,
           behavior: 'smooth'
         });
-        // Закрыть бургер
-        document.querySelector('.burger')?.classList.remove('active');
-        document.querySelector('.header__nav')?.classList.remove('active');
+      }
+      
+      // Закрываем бургер
+      if (burger && nav) {
+        burger.classList.remove('active');
+        nav.classList.remove('active');
       }
     });
   });
 
-  // Модалка (твоя работает)
+  // 3. МОДАЛКА ПОРТФОЛИО
   document.querySelectorAll('.portfolio__image, .portfolio__image--full').forEach(img => {
     img.style.cursor = 'pointer';
-    img.addEventListener('click', function() {
-      // Твой код модалки БЕЗ ИЗМЕНЕНИЙ
+    img.addEventListener('click', function(e) {
+      const slider = this.closest('[data-slider]');
+      const images = slider.querySelectorAll('.portfolio__image, .portfolio__image--full');
+      const allImages = Array.from(images);
+      const currentIndex = allImages.indexOf(this);
+      
+      const modal = document.createElement('div');
+      modal.className = 'portfolio-modal';
+      
+      let slidesHTML = '';
+      allImages.forEach((imgEl, i) => {
+        slidesHTML += `<img src="${imgEl.src}" class="modal-slide ${i === currentIndex ? 'active' : ''}" data-index="${i}">`;
+      });
+      
+      modal.innerHTML = `
+        <div class="modal-gallery">
+          ${slidesHTML}
+          <button class="modal-prev">❮</button>
+          <button class="modal-next">❯</button>
+          <button class="modal-close">×</button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      
+      const modalSlides = modal.querySelectorAll('.modal-slide');
+      let modalCurrent = currentIndex;
+      
+      function showModalSlide(index) {
+        modalSlides.forEach(s => s.classList.remove('active'));
+        modalSlides[index].classList.add('active');
+        modalCurrent = index;
+      }
+      
+      modal.querySelector('.modal-prev').addEventListener('click', () => {
+        if (modalCurrent > 0) showModalSlide(modalCurrent - 1);
+      });
+      modal.querySelector('.modal-next').addEventListener('click', () => {
+        if (modalCurrent < modalSlides.length - 1) showModalSlide(modalCurrent + 1);
+      });
+      modal.querySelector('.modal-close').addEventListener('click', () => {
+        document.body.removeChild(modal);
+      });
+      modal.addEventListener('click', e => {
+        if (e.target === modal) document.body.removeChild(modal);
+      });
     });
   });
 
-  // Стрелки портфолио
+  // 4. СТРЕЛКИ ПОРТФОЛИО ДЕСКТОП
   document.querySelectorAll('[data-slider]').forEach(slider => {
     const track = slider.querySelector('.portfolio__slides');
+    const slides = slider.querySelectorAll('.portfolio__slide');
     const prevBtn = slider.querySelector('.portfolio__arrow--prev');
     const nextBtn = slider.querySelector('.portfolio__arrow--next');
+    
     let index = 0;
     
-    function goToSlide(n) {
-      index = Math.max(0, Math.min(slider.querySelectorAll('.portfolio__slide').length - 1, n));
-      track.style.transform = `translateX(${-index * 100}%)`;
+    function goToSlide(newIndex) {
+      index = Math.max(0, Math.min(slides.length - 1, newIndex));
+      const offset = -index * 100;
+      track.style.transition = 'none';
+      track.style.transform = `translateX(${offset}%)`;
     }
     
-    prevBtn?.addEventListener('click', () => goToSlide(index - 1));
-    nextBtn?.addEventListener('click', () => goToSlide(index + 1));
+    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(index - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(index + 1));
+    goToSlide(0);
   });
 });
