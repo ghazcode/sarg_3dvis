@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // 1. БУРГЕР
+  // 1. Бургер-меню 
   const burger = document.querySelector('.burger');
   const nav = document.querySelector('.header__nav');
-  
   if (burger && nav) {
     burger.addEventListener('click', function() {
       burger.classList.toggle('active');
@@ -10,30 +9,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 2. ПЛАВНЫЙ СКРОЛЛ ПО МЕНЮ
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = this.getAttribute('href');
-      const target = document.querySelector(href);
-      
-      if (target && href !== '#') {
-        const offset = target.offsetTop - 90;
-        window.scrollTo({
-          top: offset,
-          behavior: 'smooth'
-        });
-      }
-      
-      // Закрываем бургер
-      if (burger && nav) {
-        burger.classList.remove('active');
-        nav.classList.remove('active');
-      }
-    });
+    
+    // Закрываем бургер
+    if (burger && nav) {
+      burger.classList.remove('active');
+      nav.classList.remove('active');
+    }
   });
-
-  // 3. МОДАЛКА ПОРТФОЛИО
+});
+  
+  // 2. ТОЛЬКО МОДАЛКА (без слайдеров!)
   document.querySelectorAll('.portfolio__image, .portfolio__image--full').forEach(img => {
     img.style.cursor = 'pointer';
     img.addEventListener('click', function(e) {
@@ -83,25 +68,27 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   });
-
-  // 4. СТРЕЛКИ ПОРТФОЛИО ДЕСКТОП
-  document.querySelectorAll('[data-slider]').forEach(slider => {
-    const track = slider.querySelector('.portfolio__slides');
-    const slides = slider.querySelectorAll('.portfolio__slide');
-    const prevBtn = slider.querySelector('.portfolio__arrow--prev');
-    const nextBtn = slider.querySelector('.portfolio__arrow--next');
-    
-    let index = 0;
-    
-    function goToSlide(newIndex) {
-      index = Math.max(0, Math.min(slides.length - 1, newIndex));
-      const offset = -index * 100;
-      track.style.transition = 'none';
-      track.style.transform = `translateX(${offset}%)`;
-    }
-    
-    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(index - 1));
-    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(index + 1));
-    goToSlide(0);
-  });
 });
+
+// 🔥 ДЕСКТОП СТРЕЛКИ
+document.querySelectorAll('[data-slider]').forEach(slider => {
+  const track = slider.querySelector('.portfolio__slides');
+  const slides = slider.querySelectorAll('.portfolio__slide');
+  const prevBtn = slider.querySelector('.portfolio__arrow--prev');
+  const nextBtn = slider.querySelector('.portfolio__arrow--next');
+  
+  let index = 0;
+  
+  function goToSlide(newIndex) {
+  index = Math.max(0, Math.min(slides.length - 1, newIndex));
+  const offset = -index * 100;
+  track.style.transition = 'none';  // ← МОМЕНТАЛЬНО!
+  track.style.transform = `translateX(${offset}%)`;
+}
+  
+  if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(index - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(index + 1));
+  
+  goToSlide(0);
+});
+
