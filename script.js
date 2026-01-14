@@ -9,23 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-// 🔥 ПЛАВНЫЙ СКРОЛЛ (ФИНАЛЬНАЯ ВЕРСИЯ)
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault(); // ✅ ПЕРВЫМ ДЕЛОМ!
-    
-    const href = this.getAttribute('href');
-    if (href !== '#' && href !== '#home') {
-      const target = document.querySelector(href);
-      if (target) {
-        const headerOffset = 90;
-        const elementPosition = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-        window.scrollTo({
-          top: elementPosition,
-          behavior: 'smooth'
-        });
-      }
-    }
     
     // Закрываем бургер
     if (burger && nav) {
@@ -108,4 +91,5 @@ document.querySelectorAll('[data-slider]').forEach(slider => {
   
   goToSlide(0);
 });
+
 
