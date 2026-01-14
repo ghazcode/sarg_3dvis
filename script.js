@@ -89,29 +89,29 @@ document.addEventListener('DOMContentLoaded', function() {
     goToSlide(0);
   });
 
-// 🔥 ПЛАВНЫЙ СКРОЛЛ (замени СТАРЫЙ блок)
+// 🔥 ПЛАВНЫЙ СКРОЛЛ — МЕДЛЕННЫЙ И ПЛАВНЫЙ
 let targetScroll = window.scrollY;
 let isScrolling = false;
+let lastWheelTime = 0;
 
 function scrollToTarget() {
   const scrollY = window.scrollY;
   const distance = targetScroll - scrollY;
   
   if (Math.abs(distance) > 1) {
-    window.scrollTo(0, scrollY + distance * 0.12);
+    window.scrollTo(0, scrollY + distance * 0.1);  // 0.1 = очень плавно
     requestAnimationFrame(scrollToTarget);
   } else {
     isScrolling = false;
   }
 }
 
-let lastWheelTime = 0;
 window.addEventListener('wheel', (e) => {
   e.preventDefault();
   const now = Date.now();
   
-  if (now - lastWheelTime > 100) {
-    targetScroll += e.deltaY * 0.6;  // ← МЕНЬШЕ! было 1.2
+  if (now - lastWheelTime > 120) {  // каждые 120мс
+    targetScroll += e.deltaY * 0.5;  // 0.5 = МЕДЛЕННО
     lastWheelTime = now;
     
     if (!isScrolling) {
@@ -120,4 +120,3 @@ window.addEventListener('wheel', (e) => {
     }
   }
 }, { passive: false });
-
