@@ -9,29 +9,31 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 🔥 ПЛАВНЫЙ СКРОЛЛ (вставь СЮДА)
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      if (this.getAttribute('href') !== '#') {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const target = document.querySelector(targetId);
-        if (target) {
-          const headerOffset = 90;
-          const elementPosition = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-          window.scrollTo({
-            top: elementPosition,
-            behavior: 'smooth'
-          });
-          // закрываем бургер
-          if (burger && nav) {
-            burger.classList.remove('active');
-            nav.classList.remove('active');
-          }
-        }
+// 🔥 ПЛАВНЫЙ СКРОЛЛ (ФИНАЛЬНАЯ ВЕРСИЯ)
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault(); // ✅ ПЕРВЫМ ДЕЛОМ!
+    
+    const href = this.getAttribute('href');
+    if (href !== '#' && href !== '#home') {
+      const target = document.querySelector(href);
+      if (target) {
+        const headerOffset = 90;
+        const elementPosition = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth'
+        });
       }
-    });
+    }
+    
+    // Закрываем бургер
+    if (burger && nav) {
+      burger.classList.remove('active');
+      nav.classList.remove('active');
+    }
   });
+});
   
   // 2. ТОЛЬКО МОДАЛКА (без слайдеров!)
   document.querySelectorAll('.portfolio__image, .portfolio__image--full').forEach(img => {
@@ -106,3 +108,4 @@ document.querySelectorAll('[data-slider]').forEach(slider => {
   
   goToSlide(0);
 });
+
